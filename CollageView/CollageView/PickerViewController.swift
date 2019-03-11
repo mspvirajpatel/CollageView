@@ -34,7 +34,6 @@ class PickerViewController: UIViewController {
     @IBOutlet weak var menu03: UIView!
     @IBOutlet weak var menu04: UIView!
     
-    
     @IBAction func clearBtnPressed(_ sender: Any) {
         guard selectedItemSet.count > 0 else { return }
         self.selectedItemSet.removeAll()
@@ -46,7 +45,7 @@ class PickerViewController: UIViewController {
     
     let cachingImageManager = PHCachingImageManager()
     
-    fileprivate var collageItems : [CollageViewType] = [.t404,.t101,.t201,.t202,.t301,.t302,.t303,.t401,.t402,.t403,.t801,.t802,.t501,.t502,.t601,.t602]
+    fileprivate var collageItems : [CollageViewType] = [.t405,.t404,.t101,.t201,.t202,.t301,.t302,.t303,.t401,.t402,.t403,.t801,.t802,.t501,.t502,.t601,.t602]
     fileprivate var assets = [PHAsset]()
     fileprivate var selectedItemSet = Set<CLOCellItem>()
     fileprivate var selectedItemArray = [CLOCellItem]()
@@ -367,27 +366,25 @@ extension PickerViewController : SwipeViewDataSource {
         collage.backgroundColor = .white
         view.addSubview(collage)
         
-        
         let xConst = NSLayoutConstraint(item: collage, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
         let yConst = NSLayoutConstraint(item: collage, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0)
         let wConst = NSLayoutConstraint(item: collage, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 0.9, constant: 0)
         let hConst = NSLayoutConstraint(item: collage, attribute: .height, relatedBy: .equal, toItem: collage, attribute: .width, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([xConst,yConst,wConst,hConst])
         
-      
         collage.isUserInteractionEnabled = false
         collage.updateMargin(val: 3.0)
         collage.updatePadding(val: 1.5)
         collage.layoutIfNeeded()
         collage.layoutSubviews()
+        collage.setPhotos(photos: self.selectedImageArray)
         
         if collageItems[index] == .t602 {
             cornerRedius(views: collage.collageCells)
-        }
-        if collageItems[index] == .t404 {
-            collage.setPhotos(photos: self.selectedImageArray, isRoundedHex: true)
-        } else {
-            collage.setPhotos(photos: self.selectedImageArray)
+        } else if collageItems[index] == .t404 {
+            collage.setViewHaxa(isRoundedHex: true)
+        } else if collageItems[index] == .t405 {
+            collage.setViewHaxa()
         }
         
         return view

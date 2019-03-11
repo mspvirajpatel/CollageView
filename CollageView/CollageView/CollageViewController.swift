@@ -160,9 +160,16 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
             //            collageView.collageCells[2].photoView.transform = CGAffineTransform(rotationAngle: -CGFloat(Double.pi/4))
             //            collageView.collageCells[2].photoView.transform = collageView.collageCells[2].photoView.transform.scaledBy(x: 1.3, y: 1.3)
         }
-        
-        if self.collageType == .t602 {
-            cornerRedius(views: collageView.collageCells)
+        if let imgs = self.photoImages {
+            self.collageView.setPhotos(photos: imgs)
+            if collageType == .t404 {
+                self.collageView.setViewHaxa(isRoundedHex: true)
+            } else if collageType == .t405 {
+                self.collageView.setViewHaxa()
+            } else if self.collageType == .t602 {
+                cornerRedius(views: collageView.collageCells)
+            }
+            print("final Rect: \(self.collageView.frame)")
         }
         collageView.delegate = self
         let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress(_:)))
@@ -308,14 +315,8 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         //        print("vc view did layout subviews")
-        if let imgs = self.photoImages {
-            if collageType == .t404 {
-                self.collageView.setPhotos(photos: imgs, isRoundedHex: true)
-            } else {
-                self.collageView.setPhotos(photos: imgs)
-            }
-            print("final Rect: \(self.collageView.frame)")
-        }
+        
+        
         
         //        if let img = UIImage(named: "img01") {
         //            self.collageView.setPhotos(photos: [img,img,img,img])

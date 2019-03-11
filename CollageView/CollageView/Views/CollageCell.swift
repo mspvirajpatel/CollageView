@@ -150,9 +150,9 @@ class CollageCell: UIView {
         self.delegate?.didSelectCell(cellId: id)
     }
     
-    func drawRoundedBorder(borderLayer:CAShapeLayer,width:CGFloat,height:CGFloat, cornerRadius:Float, lineWidth:CGFloat)->CAShapeLayer{
+    func drawRoundedBorder(borderLayer:CAShapeLayer,width:CGFloat,height:CGFloat, cornerRadius:Float, lineWidth:CGFloat, sides:Int = 6)->CAShapeLayer{
         let crect = CGRect(x: 0, y: 0, width: width, height: height)
-        let path = roundedPolygonPathWithRect(square: crect, lineWidth: 0, sides: 9, cornerRadius: cornerRadius)
+        let path = roundedPolygonPathWithRect(square: crect, lineWidth: 0, sides: sides, cornerRadius: cornerRadius)
         borderLayer.path = path.cgPath
         borderLayer.lineWidth = lineWidth
         let grayBorder = UIColor(red: 235.0/255.0, green: 235.0/255.0, blue: 235.0/255.0, alpha: 1.0)
@@ -163,9 +163,9 @@ class CollageCell: UIView {
         return borderLayer
     }
     
-    func drawRoundedHex(shapeLayer:CAShapeLayer,width:CGFloat,height:CGFloat, cornerRadius:Float)->CAShapeLayer{
+    func drawRoundedHex(shapeLayer:CAShapeLayer,width:CGFloat,height:CGFloat, cornerRadius:Float, sides:Int = 6)->CAShapeLayer{
         let crect = CGRect(x: 0, y: 0, width: width, height: height)
-        let path = roundedPolygonPathWithRect(square: crect, lineWidth: 0, sides: 9, cornerRadius: cornerRadius)
+        let path = roundedPolygonPathWithRect(square: crect, lineWidth: 0, sides: sides, cornerRadius: cornerRadius)
         
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = UIColor.clear.cgColor
@@ -175,9 +175,9 @@ class CollageCell: UIView {
         
         
     }
-    func drawTransparentRoundedHex(shapeLayer:CAShapeLayer,width:CGFloat,height:CGFloat)->CAShapeLayer{
+    func drawTransparentRoundedHex(shapeLayer:CAShapeLayer,width:CGFloat,height:CGFloat, sides:Int = 6)->CAShapeLayer{
         let crect = CGRect(x: 0, y: 0, width: width, height: height)
-        let path = roundedPolygonPathWithRect(square: crect, lineWidth: 0, sides: 9, cornerRadius: 14)
+        let path = roundedPolygonPathWithRect(square: crect, lineWidth: 0, sides: sides, cornerRadius: 14)
         
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = UIColor.clear.cgColor

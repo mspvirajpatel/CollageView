@@ -49,6 +49,7 @@ enum CollageViewType : Int {
     case t601
     case t602
     case t404
+    case t405
     case t102
     var getInstance : CollageView {
         switch self {
@@ -68,7 +69,7 @@ enum CollageViewType : Int {
         case .t601 : return CollageViewT601()
         case .t602 : return CollageViewT602()
         case .t404 : return CollageViewT404()
-            
+        case .t405 : return CollageViewT405()
         default: return CollageViewT402()
         }
     }
@@ -147,7 +148,7 @@ open class CollageView: UIView {
         self.layoutIfNeeded()
     }
     
-    func setPhotos(photos : [UIImage], isRoundedHex: Bool? = false) {
+    func setPhotos(photos : [UIImage]) {
         
         guard !setPhoto else { return }
         setPhoto = true
@@ -155,25 +156,44 @@ open class CollageView: UIView {
         for (i,photo) in photos.enumerated() {
             guard i < self.collageCells.count else { break }
             let cell = self.collageCells[i]
-            if isRoundedHex! {
-                if cell.id != 4 {
-                   
-                    let polyWidth = cell.frame.width
-                    let polyHeight = cell.frame.height
-//                    cell.maskHexagonView(cornerRadius: 02, lineWidth: 10)
-
-                    cell.layer.mask  = cell.drawRoundedHex(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02)
-
-                    cell.layer.masksToBounds = false
-                    cell.layer.shouldRasterize = true
-                    cell.isOpaque = true
-                    cell.layer.addSublayer(cell.drawRoundedBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 10))
-                }
-            }
-//
+            
             cell.photoView.setPhoto(img: photo)
         }
     }
+    
+    func setViewHaxa(isRoundedHex: Bool? = false) {
+        
+        for cell in collageCells {
+            if isRoundedHex! {
+                if cell.id != 4 {
+                    let polyWidth = cell.frame.width
+                    let polyHeight = cell.frame.height
+                    //                    cell.maskHexagonView(cornerRadius: 02, lineWidth: 10)
+                    
+                    cell.layer.mask  = cell.drawRoundedHex(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, sides: 9)
+                    
+                    cell.layer.masksToBounds = false
+                    cell.layer.shouldRasterize = true
+                    cell.isOpaque = true
+                    cell.layer.addSublayer(cell.drawRoundedBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 10, sides: 9))
+                }
+            } else {
+                cell.configureLayerForHexagon()
+//                let polyWidth = cell.frame.width
+//                let polyHeight = cell.frame.height
+//                //                    cell.maskHexagonView(cornerRadius: 02, lineWidth: 10)
+//
+//                cell.layer.mask  = cell.drawRoundedHex(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02)
+//
+//                cell.layer.masksToBounds = false
+//                cell.layer.shouldRasterize = true
+//                cell.isOpaque = true
+//                cell.layer.addSublayer(cell.drawRoundedBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 10))
+            }
+        }
+        
+    }
+    
 }
 
 extension CollageView : CollageCellDelegate {
@@ -209,9 +229,9 @@ extension UIView {
         let maskLayer = CAShapeLayer()
         maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
         maskLayer.frame = bounds
-        
-        let width = bounds.width
-        let height = bounds.height
+
+        let width = frame.width < frame.height ? frame.height - (frame.height * 40) / 299 : frame.width
+        let height = frame.width < frame.height ? frame.height - (frame.height * 40) / 299 : frame.width
         let hPadding = width * 1 / 8 / 2
         
         UIGraphicsBeginImageContext(bounds.size)
