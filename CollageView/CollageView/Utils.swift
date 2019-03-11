@@ -158,7 +158,7 @@ extension UIImage {
         guard self.size != newSize else { return self }
         
         UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0);
-        let ctx = UIGraphicsGetCurrentContext()
+        _ = UIGraphicsGetCurrentContext()
         self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
         // white border
         //        ctx?.setLineWidth(50.0)

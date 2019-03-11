@@ -22,6 +22,8 @@ class CollageCell: UIView {
      // Drawing code
      }
      */
+    var hexagonPath: CGPath?
+    var isClicked:Bool? = false
     
     var id : Int = 0
     weak var delegate : CollageCellDelegate?
@@ -100,6 +102,8 @@ class CollageCell: UIView {
         self.translatesAutoresizingMaskIntoConstraints = true
         self.backgroundColor = UIColor(hex: 0xE5E5E5) //UIColor.generateRandomColor()
         self.addGestureRecognizer(self.tapGesture)
+        photoView.photoImage.clipsToBounds = true
+       
         //        for items in collageView.collageCells {
         //            octagon = Octagonic(view: items, image: items.photoView, color: UIColor.red, offset: 0)
         //        }
@@ -126,6 +130,8 @@ class CollageCell: UIView {
         self.backgroundColor = UIColor(hex: 0xE5E5E5) //UIColor.generateRandomColor()
         self.addGestureRecognizer(self.tapGesture)
         self.clipsToBounds = true
+        photoView.photoImage.clipsToBounds = true
+    
         //        octagon = Octagonic(view: self, image: photoView.photoImage, color: UIColor.white, offset: 0)
         //        let polyLayer = drawPolygonLayer(x: self.frame.midX,y: self.frame.midY,radius: self.frame.midX, sides: 12, color: UIColor.yellow, offset: 0)
         //        self.layer.masksToBounds = false
@@ -143,4 +149,107 @@ class CollageCell: UIView {
         self.isSelected = true
         self.delegate?.didSelectCell(cellId: id)
     }
+    
+    func drawRoundedBorder(borderLayer:CAShapeLayer,width:CGFloat,height:CGFloat, cornerRadius:Float, lineWidth:CGFloat)->CAShapeLayer{
+        let crect = CGRect(x: 0, y: 0, width: width, height: height)
+        let path = roundedPolygonPathWithRect(square: crect, lineWidth: 0, sides: 9, cornerRadius: cornerRadius)
+        borderLayer.path = path.cgPath
+        borderLayer.lineWidth = lineWidth
+        let grayBorder = UIColor(red: 235.0/255.0, green: 235.0/255.0, blue: 235.0/255.0, alpha: 1.0)
+        borderLayer.strokeColor = grayBorder.cgColor
+        borderLayer.fillColor = UIColor.clear.cgColor
+        borderLayer.borderWidth = 0
+        
+        return borderLayer
+    }
+    
+    func drawRoundedHex(shapeLayer:CAShapeLayer,width:CGFloat,height:CGFloat, cornerRadius:Float)->CAShapeLayer{
+        let crect = CGRect(x: 0, y: 0, width: width, height: height)
+        let path = roundedPolygonPathWithRect(square: crect, lineWidth: 0, sides: 9, cornerRadius: cornerRadius)
+        
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = UIColor.clear.cgColor
+        shapeLayer.fillColor = UIColor.white.cgColor
+        shapeLayer.borderWidth = 0
+        return shapeLayer
+        
+        
+    }
+    func drawTransparentRoundedHex(shapeLayer:CAShapeLayer,width:CGFloat,height:CGFloat)->CAShapeLayer{
+        let crect = CGRect(x: 0, y: 0, width: width, height: height)
+        let path = roundedPolygonPathWithRect(square: crect, lineWidth: 0, sides: 9, cornerRadius: 14)
+        
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = UIColor.clear.cgColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.borderWidth = 0
+        return shapeLayer
+        
+        
+    }
+    func roundedPolygonPathWithRect(square: CGRect, lineWidth: Float, sides: Int, cornerRadius: Float) -> UIBezierPath {
+        let path = UIBezierPath()
+        
+        let theta = Float(2.0 * Double.pi) / Float(sides)
+        let offset = cornerRadius * tanf(theta / 2.0)
+        let squareWidth = Float(min(square.size.width, square.size.height))
+        
+        var length = squareWidth - lineWidth
+        
+        if sides % 4 != 0 {
+            length = length * cosf(theta / 2.0) + offset / 2.0
+        }
+        
+        let sideLength = length * tanf(theta / 2.0)
+        
+        var point = CGPoint.init(x: CGFloat((squareWidth / 2.0) + (sideLength / 2.0) - offset), y: CGFloat(squareWidth - (squareWidth - length) / 2.0))
+        
+        var angle = Float(Double.pi)
+        path.move(to: point)
+        
+        var sidesCount:[Int] = []
+        var item:Int = 1
+        while item <= sides {
+            item = item + 1
+            sidesCount += [item]
+        }
+        
+        
+        for _ in sidesCount {
+            let x = Float(point.x) + (sideLength - offset * 2.0) * cosf(angle)
+            let y = Float(point.y) + (sideLength - offset * 2.0) * sinf(angle)
+            
+            point = CGPoint.init(x: CGFloat(x), y: CGFloat(y))
+            
+            path.addLine(to: point)
+            
+            let centerX = Float(point.x) + cornerRadius * cosf(angle + Float(Double.pi / 2))
+            let centerY = Float(point.y) + cornerRadius * sinf(angle + Float(Double.pi / 2))
+            
+            let center = CGPoint.init(x: CGFloat(centerX), y: CGFloat(centerY))
+            
+            let startAngle = CGFloat(angle) - CGFloat(Double.pi / 2)
+            let endAngle = CGFloat(angle) + CGFloat(theta) - CGFloat(Double.pi / 2)
+            
+            path.addArc(withCenter: center, radius: CGFloat(cornerRadius), startAngle: startAngle, endAngle: endAngle, clockwise: true)
+            
+            point = path.currentPoint
+            angle += theta
+        }
+        
+        path.close()
+        
+        return path
+    }
+    
+    func maskHexagonView(cornerRadius:Float , lineWidth:CGFloat){
+        
+        let hexLayer = CAShapeLayer()
+        let hexborderLayer = CAShapeLayer()
+        
+        self.layer.mask  = self.drawRoundedHex(shapeLayer: hexLayer,width: self.frame.size.width, height: self.frame.size.height, cornerRadius: cornerRadius)
+        self.layer.addSublayer(self.drawRoundedBorder(borderLayer: hexborderLayer,width: self.frame.size.width, height: self.frame.size.height, cornerRadius: cornerRadius, lineWidth: lineWidth))
+        self.hexagonPath = hexLayer.path
+    }
+    
 }

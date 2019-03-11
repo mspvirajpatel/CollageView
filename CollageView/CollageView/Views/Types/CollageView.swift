@@ -48,6 +48,8 @@ enum CollageViewType : Int {
     case t502
     case t601
     case t602
+    case t404
+    case t102
     var getInstance : CollageView {
         switch self {
         case .t101 : return CollageViewT101()
@@ -65,6 +67,8 @@ enum CollageViewType : Int {
         case .t502 : return CollageViewT502()
         case .t601 : return CollageViewT601()
         case .t602 : return CollageViewT602()
+        case .t404 : return CollageViewT404()
+            
         default: return CollageViewT402()
         }
     }
@@ -97,7 +101,7 @@ open class CollageView: UIView {
         self.initBaseLines()
         
         self.backgroundColor = .white
-        
+       
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -143,7 +147,7 @@ open class CollageView: UIView {
         self.layoutIfNeeded()
     }
     
-    func setPhotos(photos : [UIImage]) {
+    func setPhotos(photos : [UIImage], isRoundedHex: Bool? = false) {
         
         guard !setPhoto else { return }
         setPhoto = true
@@ -151,14 +155,26 @@ open class CollageView: UIView {
         for (i,photo) in photos.enumerated() {
             guard i < self.collageCells.count else { break }
             let cell = self.collageCells[i]
-            
+            if isRoundedHex! {
+                if cell.id != 4 {
+                   
+                    let polyWidth = cell.frame.width
+                    let polyHeight = cell.frame.height
+//                    cell.maskHexagonView(cornerRadius: 02, lineWidth: 10)
+
+                    cell.layer.mask  = cell.drawRoundedHex(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02)
+
+                    cell.layer.masksToBounds = false
+                    cell.layer.shouldRasterize = true
+                    cell.isOpaque = true
+                    cell.layer.addSublayer(cell.drawRoundedBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 10))
+                }
+            }
+//
             cell.photoView.setPhoto(img: photo)
         }
-        
     }
-    
 }
-
 
 extension CollageView : CollageCellDelegate {
     
@@ -184,37 +200,43 @@ extension CollageView : LineHandleViewDataSource {
     }
     
     func canMove(to: CGPoint, minLen: CGFloat, baseLine: BaseLineView) -> Bool {
-        
-        var count = 0
-        for cell in self.collageCells {
-            for lh in cell.lineHandles {
-                guard let hbl = lh.baseLineView else { continue }
-                guard let preLayer = cell.layer.presentation() else { continue }
-                
-                if hbl.id == baseLine.id {
-                    let w = preLayer.bounds.size.width
-                    let h = preLayer.bounds.size.height
-                    //                    if to == .right && lh.attachedTo == .left {
-                    //                        count += 1
-                    //                        if w <= minLen { return false }
-                    //                    }
-                    //                    if to == .left && lh.attachedTo == .right {
-                    //                        count += 1
-                    //                        if w <= minLen { return false }
-                    //                    }
-                    //                    if to == .top && lh.attachedTo == .bottom {
-                    //                        count += 1
-                    //                        if h <= minLen { return false }
-                    //                    }
-                    //                    if to == .bottom && lh.attachedTo == .top {
-                    //                        count += 1
-                    //                        if h <= minLen { return false }
-                    //                    }
-                }
-            }
-        }
-        
-        //        print("found count: \(count)")
         return true
+    }
+}
+
+extension UIView {
+    func configureLayerForHexagon(rotation: CGFloat = 0) {
+        let maskLayer = CAShapeLayer()
+        maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
+        maskLayer.frame = bounds
+        
+        let width = bounds.width
+        let height = bounds.height
+        let hPadding = width * 1 / 8 / 2
+        
+        UIGraphicsBeginImageContext(bounds.size)
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: width / 2, y: 0))
+        path.addLine(to: CGPoint(x: width - hPadding, y: height / 4))
+        path.addLine(to: CGPoint(x: width - hPadding, y: height * 3 / 4))
+        path.addLine(to: CGPoint(x: width / 2, y: height))
+        path.addLine(to: CGPoint(x: hPadding, y: height * 3 / 4))
+        path.addLine(to: CGPoint(x: hPadding, y: height / 4))
+        
+        path.close()
+        path.fill()
+        maskLayer.path = path.cgPath
+        UIGraphicsEndImageContext()
+        layer.mask = maskLayer
+        
+//        let borderLayer = CAShapeLayer()
+//        borderLayer.path = path.cgPath
+//        borderLayer.lineWidth = 5
+//        borderLayer.strokeColor = UIColor.red.cgColor
+//        borderLayer.fillColor = UIColor.clear.cgColor
+//        borderLayer.frame = self.bounds
+//        self.layer.addSublayer(borderLayer)
+        
+        //        transform = CGAffineTransform(rotationAngle: rotation)
     }
 }

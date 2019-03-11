@@ -142,6 +142,18 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
         collageView.updatePadding(val: 0.0)
         
         if collageType == .t303 {
+           
+//            for cell in collageView.collageCells {
+//                let polyWidth = cell.frame.width
+//                let polyHeight = cell.frame.height
+//                cell.layer.mask  = cell.drawRoundedHex(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02)
+//                
+//                cell.layer.masksToBounds = false
+//                cell.layer.shouldRasterize = true
+//                cell.isOpaque = true
+//                cell.layer.addSublayer(cell.drawRoundedBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 12))
+//            }
+           
             //            collageView.layoutIfNeeded()
             //            collageView.layoutSubviews()
             //            collageView.collageCells[2].transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/4))
@@ -297,8 +309,11 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLayoutSubviews()
         //        print("vc view did layout subviews")
         if let imgs = self.photoImages {
-            self.collageView.setPhotos(photos: imgs)
-            
+            if collageType == .t404 {
+                self.collageView.setPhotos(photos: imgs, isRoundedHex: true)
+            } else {
+                self.collageView.setPhotos(photos: imgs)
+            }
             print("final Rect: \(self.collageView.frame)")
         }
         

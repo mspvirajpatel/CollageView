@@ -19,6 +19,9 @@ class CollageViewT101: CollageView {
         
     }
     
+    var polyWidth : CGFloat = 80.0
+    var polyHeight : CGFloat = 80.0
+    
     private func initCells() {
         
         let cell01 = CollageCell(id: 1)
@@ -37,6 +40,17 @@ class CollageViewT101: CollageView {
         self.layoutIfNeeded()
         cell01.layoutSubviews()
         cell01.layoutIfNeeded()
+     
+//        polyWidth = self.bounds.width
+//        polyHeight = self.bounds.height
+//        
+//        cell01.layer.mask  = cell01.drawRoundedHex(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 12)
+//        
+//        cell01.layer.masksToBounds = false
+//        cell01.layer.shouldRasterize = true
+//        cell01.isOpaque = true
+//        cell01.layer.addSublayer(cell01.drawRoundedBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 12, lineWidth: 12))
+        
         //        let octagon = Octagonic(view: cell01, image: cell01.photoView, color: UIColor.red, offset: 0)
     }
     

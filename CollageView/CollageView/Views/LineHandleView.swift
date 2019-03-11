@@ -169,7 +169,7 @@ extension LineHandleView : UIGestureRecognizerDelegate {
         if gestureRecognizer is UIPanGestureRecognizer {
             let gest = gestureRecognizer as! UIPanGestureRecognizer
             let velocity = gest.velocity(in: self)
-            let isVertical = fabs(velocity.y) > fabs(velocity.x)
+            let isVertical = abs(velocity.y) > abs(velocity.x)
             //            print("THIS IS VERTICAL GESTURE? \(isVertical)")
             
             guard let bline = self.baseLineView else { return false }

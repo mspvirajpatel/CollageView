@@ -38,6 +38,7 @@
 		824413CC22363A4900AF97EB /* CollageViewT502.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824413CB22363A4900AF97EB /* CollageViewT502.swift */; };
 		824413CE22363A5100AF97EB /* CollageViewT601.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824413CD22363A5100AF97EB /* CollageViewT601.swift */; };
 		824413D022363A5900AF97EB /* CollageViewT602.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824413CF22363A5900AF97EB /* CollageViewT602.swift */; };
+		824413D22236533900AF97EB /* CollageViewT404.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824413D12236533900AF97EB /* CollageViewT404.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		824413CB22363A4900AF97EB /* CollageViewT502.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT502.swift; sourceTree = "<group>"; };
 		824413CD22363A5100AF97EB /* CollageViewT601.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT601.swift; sourceTree = "<group>"; };
 		824413CF22363A5900AF97EB /* CollageViewT602.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT602.swift; sourceTree = "<group>"; };
+		824413D12236533900AF97EB /* CollageViewT404.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT404.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				824413BF22363A0800AF97EB /* CollageViewT401.swift */,
 				824413C122363A1200AF97EB /* CollageViewT402.swift */,
 				824413C322363A1A00AF97EB /* CollageViewT403.swift */,
+				824413D12236533900AF97EB /* CollageViewT404.swift */,
 				824413C522363A2E00AF97EB /* CollageViewT801.swift */,
 				824413C722363A3800AF97EB /* CollageViewT802.swift */,
 				824413C922363A4000AF97EB /* CollageViewT501.swift */,
@@ -247,6 +250,7 @@
 				824413CE22363A5100AF97EB /* CollageViewT601.swift in Sources */,
 				824413C822363A3800AF97EB /* CollageViewT802.swift in Sources */,
 				824413AA2236388500AF97EB /* LineHandleView.swift in Sources */,
+				824413D22236533900AF97EB /* CollageViewT404.swift in Sources */,
 				824413C022363A0800AF97EB /* CollageViewT401.swift in Sources */,
 				824413CC22363A4900AF97EB /* CollageViewT502.swift in Sources */,
 				824413C422363A1A00AF97EB /* CollageViewT403.swift in Sources */,
@@ -416,7 +420,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simform.CollageView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "CollageView/Views/CollageView-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "CollageView/CollageView-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -436,7 +440,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simform.CollageView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "CollageView/Views/CollageView-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "CollageView/CollageView-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

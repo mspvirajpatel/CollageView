@@ -46,7 +46,7 @@ class PickerViewController: UIViewController {
     
     let cachingImageManager = PHCachingImageManager()
     
-    fileprivate var collageItems : [CollageViewType] = [.t303,.t101,.t201,.t202,.t301,.t302,.t401,.t402,.t403,.t801,.t802,.t501,.t502,.t601,.t602]
+    fileprivate var collageItems : [CollageViewType] = [.t404,.t101,.t201,.t202,.t301,.t302,.t303,.t401,.t402,.t403,.t801,.t802,.t501,.t502,.t601,.t602]
     fileprivate var assets = [PHAsset]()
     fileprivate var selectedItemSet = Set<CLOCellItem>()
     fileprivate var selectedItemArray = [CLOCellItem]()
@@ -374,14 +374,20 @@ extension PickerViewController : SwipeViewDataSource {
         let hConst = NSLayoutConstraint(item: collage, attribute: .height, relatedBy: .equal, toItem: collage, attribute: .width, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([xConst,yConst,wConst,hConst])
         
-        collage.setPhotos(photos: self.selectedImageArray)
+      
         collage.isUserInteractionEnabled = false
         collage.updateMargin(val: 3.0)
         collage.updatePadding(val: 1.5)
         collage.layoutIfNeeded()
         collage.layoutSubviews()
+        
         if collageItems[index] == .t602 {
             cornerRedius(views: collage.collageCells)
+        }
+        if collageItems[index] == .t404 {
+            collage.setPhotos(photos: self.selectedImageArray, isRoundedHex: true)
+        } else {
+            collage.setPhotos(photos: self.selectedImageArray)
         }
         
         return view
@@ -419,5 +425,4 @@ func cornerRedius(views: [UIView]) {
         view.layer.masksToBounds = true
         view.clipsToBounds = true
     }
-    
 }

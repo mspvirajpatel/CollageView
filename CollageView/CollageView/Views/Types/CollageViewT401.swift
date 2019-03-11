@@ -13,9 +13,6 @@ class CollageViewT401: CollageView {
     
     override func initBaseLines() {
         
-        let W = self.frame.size.width
-        let H = self.frame.size.height
-        
         // initialize baseline
         let baseLine01 = BaseLineView()
         baseLine01.id = 1
