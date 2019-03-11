@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		82441384223636E000AF97EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82441383223636E000AF97EB /* AppDelegate.swift */; };
-		82441386223636E000AF97EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82441385223636E000AF97EB /* ViewController.swift */; };
 		82441389223636E000AF97EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82441387223636E000AF97EB /* Main.storyboard */; };
 		8244138B223636E100AF97EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8244138A223636E100AF97EB /* Assets.xcassets */; };
 		8244138E223636E100AF97EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8244138C223636E100AF97EB /* LaunchScreen.storyboard */; };
@@ -44,7 +43,6 @@
 /* Begin PBXFileReference section */
 		82441380223636E000AF97EB /* CollageView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollageView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82441383223636E000AF97EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		82441385223636E000AF97EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		82441388223636E000AF97EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8244138A223636E100AF97EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8244138D223636E100AF97EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -110,18 +108,20 @@
 		82441382223636E000AF97EB /* CollageView */ = {
 			isa = PBXGroup;
 			children = (
-				8244139F2236378800AF97EB /* Views */,
 				82441383223636E000AF97EB /* AppDelegate.swift */,
-				82441385223636E000AF97EB /* ViewController.swift */,
 				82441387223636E000AF97EB /* Main.storyboard */,
-				8244138A223636E100AF97EB /* Assets.xcassets */,
-				8244138C223636E100AF97EB /* LaunchScreen.storyboard */,
-				8244138F223636E100AF97EB /* Info.plist */,
 				824413952236370700AF97EB /* PickerViewController.swift */,
 				824413972236372B00AF97EB /* CollageViewController.swift */,
 				824413992236374000AF97EB /* ImageCollectionCell.swift */,
 				8244139B2236374F00AF97EB /* Utils.swift */,
 				8244139D2236376100AF97EB /* CollageTransition.swift */,
+				8244139F2236378800AF97EB /* Views */,
+				8244138A223636E100AF97EB /* Assets.xcassets */,
+				824413A4223637E800AF97EB /* SwipeView.h */,
+				824413A1223637A200AF97EB /* SwipeView.m */,
+				824413A0223637A200AF97EB /* CollageView-Bridging-Header.h */,
+				8244138C223636E100AF97EB /* LaunchScreen.storyboard */,
+				8244138F223636E100AF97EB /* Info.plist */,
 			);
 			path = CollageView;
 			sourceTree = "<group>";
@@ -130,9 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				824413B02236396900AF97EB /* Types */,
-				824413A4223637E800AF97EB /* SwipeView.h */,
-				824413A1223637A200AF97EB /* SwipeView.m */,
-				824413A0223637A200AF97EB /* CollageView-Bridging-Header.h */,
 				824413A52236382800AF97EB /* PickerViewCell.swift */,
 				824413A72236386100AF97EB /* PhotoScrollView.swift */,
 				824413A92236388500AF97EB /* LineHandleView.swift */,
@@ -252,7 +249,6 @@
 				824413AA2236388500AF97EB /* LineHandleView.swift in Sources */,
 				824413C022363A0800AF97EB /* CollageViewT401.swift in Sources */,
 				824413CC22363A4900AF97EB /* CollageViewT502.swift in Sources */,
-				82441386223636E000AF97EB /* ViewController.swift in Sources */,
 				824413C422363A1A00AF97EB /* CollageViewT403.swift in Sources */,
 				824413CA22363A4000AF97EB /* CollageViewT501.swift in Sources */,
 				8244139A2236374000AF97EB /* ImageCollectionCell.swift in Sources */,

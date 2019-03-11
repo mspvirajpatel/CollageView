@@ -17,7 +17,6 @@ class PickerViewCell: UICollectionViewCell {
     @IBOutlet weak var numLbl: UILabel!
     
     var isCellSelected : Bool = false {
-        
         didSet {
             self.selectView.isHidden = !self.isCellSelected
         }
@@ -35,10 +34,8 @@ class PickerViewCell: UICollectionViewCell {
     }
     
     func initialize() {
-        
         borderLayer.backgroundColor = .clear
         borderLayer.layer.borderColor = UIColor(hex: 0xF46060).cgColor
         borderLayer.layer.borderWidth = 3.0
-        
     }
 }
