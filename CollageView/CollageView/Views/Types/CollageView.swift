@@ -170,15 +170,23 @@ open class CollageView: UIView {
                     let polyHeight = cell.frame.height
                     //                    cell.maskHexagonView(cornerRadius: 02, lineWidth: 10)
                     
-                    cell.layer.mask  = cell.drawRoundedHex(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, sides: 9)
+                    cell.layer.mask  = cell.drawRoundedHex(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, sides:  10)
                     
                     cell.layer.masksToBounds = false
                     cell.layer.shouldRasterize = true
                     cell.isOpaque = true
-                    cell.layer.addSublayer(cell.drawRoundedBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 10, sides: 9))
+                    cell.layer.addSublayer(cell.drawRoundedBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 10, sides: 10))
                 }
             } else {
-                cell.configureLayerForHexagon()
+                let polyWidth = cell.frame.width
+                let polyHeight = cell.frame.height
+                cell.layer.mask = cell.drawRoundedHex(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, sides: 6)
+                
+                cell.layer.masksToBounds = false
+                cell.layer.shouldRasterize = true
+                cell.isOpaque = true
+                cell.layer.addSublayer(cell.drawRoundedBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 10, sides: 6))
+//                cell.configureLayerForHexagon()
 //                let polyWidth = cell.frame.width
 //                let polyHeight = cell.frame.height
 //                //                    cell.maskHexagonView(cornerRadius: 02, lineWidth: 10)

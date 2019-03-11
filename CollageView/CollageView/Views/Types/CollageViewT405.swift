@@ -95,16 +95,16 @@ class CollageViewT405: CollageView {
         cell03.delegate = self
         self.addSubview(cell03)
         
-        let lc09 = NSLayoutConstraint(item: cell03, attribute: .centerX, relatedBy: .equal, toItem: self.baseLineViews[2], attribute: .centerX, multiplier: 1, constant: 0)
-        let lc10 = NSLayoutConstraint(item: cell03, attribute: .centerY, relatedBy: .equal, toItem: self.baseLineViews[2], attribute: .centerY, multiplier: 1, constant: 0)
-        let lc11 = NSLayoutConstraint(item: cell03, attribute: .width, relatedBy: .equal, toItem: self.baseLineViews[2], attribute: .height, multiplier: 1, constant:0)
-        let lc12 = NSLayoutConstraint(item: cell03, attribute: .height, relatedBy: .equal, toItem: self.baseLineViews[2], attribute: .height, multiplier: 1, constant: 0)
-//        NSLayoutConstraint.activate([ lc01, lc02, lc03, lc04])
-        
-//        let lc09 = NSLayoutConstraint(item: cell03, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
-//        let lc10 = NSLayoutConstraint(item: cell03, attribute: .top, relatedBy: .equal, toItem: self.baseLineViews[0], attribute: .bottom, multiplier: 1, constant: 0)
-//        let lc11 = NSLayoutConstraint(item: cell03, attribute: .right, relatedBy: .equal, toItem: self.baseLineViews[2], attribute: .right, multiplier: 1, constant: 0)
-//        let lc12 = NSLayoutConstraint(item: cell03, attribute: .bottom, relatedBy: .equal, toItem: self.baseLineViews[2], attribute: .bottom, multiplier: 1, constant: 0)
+//        let lc09 = NSLayoutConstraint(item: cell03, attribute: .centerX, relatedBy: .equal, toItem: self.baseLineViews[2], attribute: .centerX, multiplier: 1, constant: 0)
+//        let lc10 = NSLayoutConstraint(item: cell03, attribute: .centerY, relatedBy: .equal, toItem: self.baseLineViews[2], attribute: .centerY, multiplier: 1, constant: 0)
+//        let lc11 = NSLayoutConstraint(item: cell03, attribute: .width, relatedBy: .equal, toItem: self.baseLineViews[2], attribute: .height, multiplier: 1, constant:0)
+//        let lc12 = NSLayoutConstraint(item: cell03, attribute: .height, relatedBy: .equal, toItem: self.baseLineViews[2], attribute: .height, multiplier: 1, constant: 0)
+////        NSLayoutConstraint.activate([ lc01, lc02, lc03, lc04])
+//        
+        let lc09 = NSLayoutConstraint(item: cell03, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
+        let lc10 = NSLayoutConstraint(item: cell03, attribute: .top, relatedBy: .equal, toItem: self.baseLineViews[0], attribute: .bottom, multiplier: 1, constant: 0)
+        let lc11 = NSLayoutConstraint(item: cell03, attribute: .right, relatedBy: .equal, toItem: self.baseLineViews[2], attribute: .right, multiplier: 1, constant: 0)
+        let lc12 = NSLayoutConstraint(item: cell03, attribute: .bottom, relatedBy: .equal, toItem: self.baseLineViews[2], attribute: .bottom, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([ lc09, lc10, lc11, lc12])
         
         let cell04 = CollageCell(id: 3)

@@ -151,7 +151,7 @@ class CollageCell: UIView {
     }
     
     func drawRoundedBorder(borderLayer:CAShapeLayer,width:CGFloat,height:CGFloat, cornerRadius:Float, lineWidth:CGFloat, sides:Int = 6)->CAShapeLayer{
-        let crect = CGRect(x: 0, y: 0, width: width, height: height)
+        let crect = CGRect(x: 0, y: 0, width: width, height: height - ((height * 20)/233))
         let path = roundedPolygonPathWithRect(square: crect, lineWidth: 0, sides: sides, cornerRadius: cornerRadius)
         borderLayer.path = path.cgPath
         borderLayer.lineWidth = lineWidth
@@ -159,12 +159,11 @@ class CollageCell: UIView {
         borderLayer.strokeColor = grayBorder.cgColor
         borderLayer.fillColor = UIColor.clear.cgColor
         borderLayer.borderWidth = 0
-        
         return borderLayer
     }
     
     func drawRoundedHex(shapeLayer:CAShapeLayer,width:CGFloat,height:CGFloat, cornerRadius:Float, sides:Int = 6)->CAShapeLayer{
-        let crect = CGRect(x: 0, y: 0, width: width, height: height)
+        let crect = CGRect(x: 0, y: 0, width: width, height: height - ((height * 20)/233))
         let path = roundedPolygonPathWithRect(square: crect, lineWidth: 0, sides: sides, cornerRadius: cornerRadius)
         
         shapeLayer.path = path.cgPath
@@ -172,72 +171,86 @@ class CollageCell: UIView {
         shapeLayer.fillColor = UIColor.white.cgColor
         shapeLayer.borderWidth = 0
         return shapeLayer
-        
-        
     }
+    
     func drawTransparentRoundedHex(shapeLayer:CAShapeLayer,width:CGFloat,height:CGFloat, sides:Int = 6)->CAShapeLayer{
-        let crect = CGRect(x: 0, y: 0, width: width, height: height)
+        let crect = CGRect(x: 0, y: 0, width: width, height: height - ((height * 20)/233))
         let path = roundedPolygonPathWithRect(square: crect, lineWidth: 0, sides: sides, cornerRadius: 14)
-        
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = UIColor.clear.cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.borderWidth = 0
         return shapeLayer
-        
-        
     }
+    
     func roundedPolygonPathWithRect(square: CGRect, lineWidth: Float, sides: Int, cornerRadius: Float) -> UIBezierPath {
-        let path = UIBezierPath()
         
-        let theta = Float(2.0 * Double.pi) / Float(sides)
-        let offset = cornerRadius * tanf(theta / 2.0)
-        let squareWidth = Float(min(square.size.width, square.size.height))
-        
-        var length = squareWidth - lineWidth
-        
-        if sides % 4 != 0 {
-            length = length * cosf(theta / 2.0) + offset / 2.0
+        let scaledWidth = (square.size.width * CGFloat(1))
+        let scaledXValue = ((square.size.width) - scaledWidth) / 2
+        let scaledHeight = (square.size.height * CGFloat(1))
+        let scaledYValue = ((square.size.height) - scaledHeight) / 2
+        let scaledRect = CGRect(x: scaledXValue, y: scaledYValue, width: scaledWidth, height: scaledHeight)
+        let center = CGPoint(x: square.width/2, y: square.height/2)
+        var angle = CGFloat( Double.pi / 2.0 )
+        let angleCounter = CGFloat( Double.pi * 2.0 / Double(sides) )
+        let radius = min(scaledRect.size.width/2, scaledRect.size.height/2)
+         let path = UIBezierPath()
+        path.move(to: CGPoint(x: radius * cos(angle) + center.x, y: radius * sin(angle) + center.y))
+        for _ in 1...sides  {
+            angle += angleCounter
+            path.addLine(to: CGPoint(x: radius * cos(angle) + center.x, y: radius * sin(angle) + center.y))
         }
-        
-        let sideLength = length * tanf(theta / 2.0)
-        
-        var point = CGPoint.init(x: CGFloat((squareWidth / 2.0) + (sideLength / 2.0) - offset), y: CGFloat(squareWidth - (squareWidth - length) / 2.0))
-        
-        var angle = Float(Double.pi)
-        path.move(to: point)
-        
-        var sidesCount:[Int] = []
-        var item:Int = 1
-        while item <= sides {
-            item = item + 1
-            sidesCount += [item]
-        }
-        
-        
-        for _ in sidesCount {
-            let x = Float(point.x) + (sideLength - offset * 2.0) * cosf(angle)
-            let y = Float(point.y) + (sideLength - offset * 2.0) * sinf(angle)
-            
-            point = CGPoint.init(x: CGFloat(x), y: CGFloat(y))
-            
-            path.addLine(to: point)
-            
-            let centerX = Float(point.x) + cornerRadius * cosf(angle + Float(Double.pi / 2))
-            let centerY = Float(point.y) + cornerRadius * sinf(angle + Float(Double.pi / 2))
-            
-            let center = CGPoint.init(x: CGFloat(centerX), y: CGFloat(centerY))
-            
-            let startAngle = CGFloat(angle) - CGFloat(Double.pi / 2)
-            let endAngle = CGFloat(angle) + CGFloat(theta) - CGFloat(Double.pi / 2)
-            
-            path.addArc(withCenter: center, radius: CGFloat(cornerRadius), startAngle: startAngle, endAngle: endAngle, clockwise: true)
-            
-            point = path.currentPoint
-            angle += theta
-        }
-        
         path.close()
+//        let path = UIBezierPath()
+//
+//        let theta = Float(2.0 * Double.pi) / Float(sides)
+//        let offset = cornerRadius * tanf(theta / 2.0)
+//        let squareWidth = Float(min(square.size.width, square.size.height))
+//
+//        var length = squareWidth - lineWidth
+//
+//        if sides % 4 != 0 {
+//            length = length * cosf(theta / 2.0) + offset / 2.0
+//        }
+//
+//        let sideLength = length * tanf(theta / 2.0)
+//
+//        var point = CGPoint.init(x: CGFloat((squareWidth / 2.0) + (sideLength / 2.0) - offset), y: CGFloat(squareWidth - (squareWidth - length) / 2.0))
+//
+//        var angle = Float(Double.pi)
+//        path.move(to: point)
+//
+//        var sidesCount:[Int] = []
+//        var item:Int = 1
+//        while item <= sides {
+//            item = item + 1
+//            sidesCount += [item]
+//        }
+//
+//
+//        for _ in sidesCount {
+//            let x = Float(point.x) + (sideLength - offset * 2.0) * cosf(angle)
+//            let y = Float(point.y) + (sideLength - offset * 2.0) * sinf(angle)
+//
+//            point = CGPoint.init(x: CGFloat(x), y: CGFloat(y))
+//
+//            path.addLine(to: point)
+//
+//            let centerX = Float(point.x) + cornerRadius * cosf(angle + Float(Double.pi / 2))
+//            let centerY = Float(point.y) + cornerRadius * sinf(angle + Float(Double.pi / 2))
+//
+//            let center = CGPoint.init(x: CGFloat(centerX), y: CGFloat(centerY))
+//
+//            let startAngle = CGFloat(angle) - CGFloat(Double.pi / 2)
+//            let endAngle = CGFloat(angle) + CGFloat(theta) - CGFloat(Double.pi / 2)
+//
+//            path.addArc(withCenter: center, radius: CGFloat(cornerRadius), startAngle: startAngle, endAngle: endAngle, clockwise: true)
+//
+//            point = path.currentPoint
+//            angle += theta
+//        }
+//
+//        path.close()
         
         return path
     }
@@ -250,6 +263,43 @@ class CollageCell: UIView {
         self.layer.mask  = self.drawRoundedHex(shapeLayer: hexLayer,width: self.frame.size.width, height: self.frame.size.height, cornerRadius: cornerRadius)
         self.layer.addSublayer(self.drawRoundedBorder(borderLayer: hexborderLayer,width: self.frame.size.width, height: self.frame.size.height, cornerRadius: cornerRadius, lineWidth: lineWidth))
         self.hexagonPath = hexLayer.path
+    }
+    
+}
+
+public extension UIBezierPath  {
+    
+    func getPolygon(_ originalRect: CGRect, scale: Double, sides: Int) -> UIBezierPath {
+        
+        let scaledWidth = (originalRect.size.width * CGFloat(scale))
+        let scaledXValue = ((originalRect.size.width) - scaledWidth) / 2
+        let scaledHeight = (originalRect.size.height * CGFloat(scale))
+        let scaledYValue = ((originalRect.size.height) - scaledHeight) / 2
+        
+        let scaledRect = CGRect(x: scaledXValue, y: scaledYValue, width: scaledWidth, height: scaledHeight)
+        
+        drawPolygon(originalRect, scaledRect: scaledRect, sides: sides)
+        
+        return self
+    }
+    
+    
+    func drawPolygon(_ originalRect: CGRect, scaledRect: CGRect, sides: Int) {
+        
+        let center = CGPoint(x: originalRect.width/2, y: originalRect.height/2)
+        
+        var angle = CGFloat( Double.pi / 2.0 )
+        
+        let angleCounter = CGFloat( Double.pi * 2.0 / Double(sides) )
+        let radius = min(scaledRect.size.width/2, scaledRect.size.height/2)
+        
+        self.move(to: CGPoint(x: radius * cos(angle) + center.x, y: radius * sin(angle) + center.y))
+        for _ in 1...sides  {
+            angle += angleCounter
+            self.addLine(to: CGPoint(x: radius * cos(angle) + center.x, y: radius * sin(angle) + center.y))
+        }
+        self.close()
+        
     }
     
 }
