@@ -43,7 +43,6 @@ class CollageViewT201: CollageView {
         let lc04 = NSLayoutConstraint(item: cell01, attribute: .bottom, relatedBy: .equal, toItem: self.baseLineViews[0], attribute: .bottom, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([ lc01, lc02, lc03, lc04])
         
-        
         let cell02 = CollageCell(id: 2)
         cell02.delegate = self
         self.addSubview(cell02)

@@ -138,28 +138,9 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         _ = self.collageView
-        collageView.updateMargin(val: 0.0)
-        collageView.updatePadding(val: 0.0)
-        
-        if collageType == .t303 {
-           
-//            for cell in collageView.collageCells {
-//                let polyWidth = cell.frame.width
-//                let polyHeight = cell.frame.height
-//                cell.layer.mask  = cell.drawRoundedHex(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02)
-//                
-//                cell.layer.masksToBounds = false
-//                cell.layer.shouldRasterize = true
-//                cell.isOpaque = true
-//                cell.layer.addSublayer(cell.drawRoundedBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 12))
-//            }
-           
-            //            collageView.layoutIfNeeded()
-            //            collageView.layoutSubviews()
-            //            collageView.collageCells[2].transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/4))
-            //            collageView.collageCells[2].photoView.transform = CGAffineTransform(rotationAngle: -CGFloat(Double.pi/4))
-            //            collageView.collageCells[2].photoView.transform = collageView.collageCells[2].photoView.transform.scaledBy(x: 1.3, y: 1.3)
-        }
+        collageView.updateMargin(val: 3.0)
+        collageView.updatePadding(val: 1.5)
+        collageView.collageType = collageType
         if let imgs = self.photoImages {
             self.collageView.setPhotos(photos: imgs)
             if collageType == .t404 {
@@ -184,10 +165,6 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         self.view.backgroundColor = UIColor.white
-        
-        //        for items in collageView.collageCells {
-        //            let octagon = Octagonic(view: items, image: items.photoView, color: UIColor.red, offset: 0)
-        //        }
         
     }
     
@@ -291,24 +268,6 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    //    func tuneImageView(_ imageView: UIImageView?, withCenterPont centerPont: CGPoint) {
-    //
-    //        imageView?.center = centerPont
-    //        imageView?.isUserInteractionEnabled = true
-    //        let pan = UIPanGestureRecognizer(target: self, action: #selector(self.moveImage(inCollage:)))
-    //        pan.delegate = self
-    //        imageView?.addGestureRecognizer(pan)
-    //        let tap = UITapGestureRecognizer(target: self, action: #selector(self.bringSubviewToFront(_:)))
-    //        tap.delegate = self
-    //        imageView?.addGestureRecognizer(tap)
-    //        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.choose(fromLibrary:)))
-    //        doubleTap.numberOfTapsRequired = 2
-    //        imageView?.addGestureRecognizer(doubleTap)
-    //        imageView?.layer.borderColor = UIColor.white.cgColor
-    //        imageView?.layer.borderWidth = 5.0
-    //
-    //    }
-    //
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -316,13 +275,7 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        //        print("vc view did layout subviews")
-        
-        
-        
-        //        if let img = UIImage(named: "img01") {
-        //            self.collageView.setPhotos(photos: [img,img,img,img])
-        //        }
+      
     }
     
     

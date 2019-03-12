@@ -43,7 +43,6 @@ class CollageViewT303: CollageView {
         let lc04 = NSLayoutConstraint(item: cell01, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant:0)
         NSLayoutConstraint.activate([ lc01, lc02, lc03, lc04])
         
-        
         let cell02 = CollageCell(id: 2)
         cell02.delegate = self
         self.addSubview(cell02)
@@ -62,7 +61,6 @@ class CollageViewT303: CollageView {
         let lc11 = NSLayoutConstraint(item: cell03, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.39, constant:0)
         let lc12 = NSLayoutConstraint(item: cell03, attribute: .height, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.39, constant: 0)
         NSLayoutConstraint.activate([ lc09, lc10, lc11, lc12])
-        
         
         self.marginLeftTopContraints += [lc01,lc02,lc06]
         self.marginRightBottomContraints += [lc04,lc07,lc08]

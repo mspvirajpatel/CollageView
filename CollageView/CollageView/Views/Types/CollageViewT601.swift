@@ -27,7 +27,6 @@ class CollageViewT601: CollageView {
         NSLayoutConstraint.activate([ lc01, lc02, lc03, lc04])
         baseLine01.baseLC = lc04
         
-        
         let baseLine02 = BaseLineView()
         baseLine02.id = 2
         baseLine02.moveType = .leftRight
@@ -40,7 +39,6 @@ class CollageViewT601: CollageView {
         let lc08 = NSLayoutConstraint(item: baseLine02, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1/3, constant: 0)
         NSLayoutConstraint.activate([ lc05, lc06, lc07, lc08])
         baseLine02.baseLC = lc07
-        
         
         let baseLine03 = BaseLineView()
         baseLine03.id = 3
@@ -68,7 +66,6 @@ class CollageViewT601: CollageView {
         NSLayoutConstraint.activate([ lc13, lc14, lc15, lc16])
         baseLine04.baseLC = lc16
         
-        
         let baseLine05 = BaseLineView()
         baseLine05.id = 5
         baseLine05.moveType = .leftRight
@@ -81,7 +78,6 @@ class CollageViewT601: CollageView {
         let lc20 = NSLayoutConstraint(item: baseLine05, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1/3, constant: 0)
         NSLayoutConstraint.activate([ lc17, lc18, lc19, lc20])
         baseLine05.baseLC = lc20
-        
         
         self.baseLineViews += [baseLine01,baseLine02,baseLine03,baseLine04,baseLine05]
         self.initCells()
@@ -98,7 +94,6 @@ class CollageViewT601: CollageView {
         let lc04 = NSLayoutConstraint(item: cell01, attribute: .bottom, relatedBy: .equal, toItem: self.baseLineViews[0], attribute: .bottom, multiplier: 1, constant: 0.0)
         NSLayoutConstraint.activate([ lc01, lc02, lc03, lc04])
         
-        
         let cell02 = CollageCell(id: 2)
         cell02.delegate = self
         self.addSubview(cell02)
@@ -107,7 +102,6 @@ class CollageViewT601: CollageView {
         let lc07 = NSLayoutConstraint(item: cell02, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
         let lc08 = NSLayoutConstraint(item: cell02, attribute: .bottom, relatedBy: .equal, toItem: self.baseLineViews[0], attribute: .bottom, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([ lc05, lc06, lc07, lc08])
-        
         
         let cell03 = CollageCell(id: 3)
         cell03.delegate = self
@@ -135,7 +129,6 @@ class CollageViewT601: CollageView {
         let lc19 = NSLayoutConstraint(item: cell05, attribute: .right, relatedBy: .equal, toItem: self.baseLineViews[4], attribute: .right, multiplier: 1, constant: 0)
         let lc20 = NSLayoutConstraint(item: cell05, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([lc17, lc18, lc19, lc20])
-        
         
         let cell06 = CollageCell(id: 6)
         cell06.delegate = self

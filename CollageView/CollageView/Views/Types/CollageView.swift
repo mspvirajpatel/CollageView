@@ -97,6 +97,7 @@ open class CollageView: UIView {
     var margin : CGFloat = 0.0
     var padding : CGFloat = 0.0
     weak var delegate: CollageViewDelegate?
+    var collageType : CollageViewType = .t301
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -130,11 +131,27 @@ open class CollageView: UIView {
     }
     
     func updateBorder(val : CGFloat) {
-        
-        for cell in self.collageCells {
-            cell.layer.borderColor = UIColor.white.cgColor
-            cell.layer.borderWidth = val
+        if collageType == .t304 {
+            for cell in self.collageCells {
+                if cell.id != 3 {
+                    cell.layer.borderColor = UIColor.white.cgColor
+                    cell.layer.borderWidth = val
+                }
+            }
+        } else if collageType == .t303 {
+            for cell in self.collageCells {
+                if cell.id != 3 {
+                    cell.layer.borderColor = UIColor.white.cgColor
+                    cell.layer.borderWidth = val
+                }
+            }
+        } else {
+            for cell in self.collageCells {
+                cell.layer.borderColor = UIColor.white.cgColor
+                cell.layer.borderWidth = val
+            }
         }
+       
     }
     
     func updateMargin(val : CGFloat) {
@@ -169,8 +186,6 @@ open class CollageView: UIView {
                 if cell.id != 4 {
                     let polyWidth = cell.frame.width
                     let polyHeight = cell.frame.height
-                    //                    cell.maskHexagonView(cornerRadius: 02, lineWidth: 10)
-                    
                     cell.layer.mask  = cell.drawRoundedHex(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, sides:  10)
                     
                     cell.layer.masksToBounds = false
@@ -189,19 +204,12 @@ open class CollageView: UIView {
                 cell.layer.addSublayer(cell.drawRoundedBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 10, sides: 6))
                 
 //                cell.configureLayerForHexagon()
-//                let polyWidth = cell.frame.width
-//                let polyHeight = cell.frame.height
-//                cell.layer.mask = cell.drawHearts(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, sides: 6)
-//
-//                cell.layer.masksToBounds = false
-//                cell.layer.shouldRasterize = true
-//                cell.isOpaque = true
+
             }
         }
     }
     
     func setHeartView() {
-        
         for cell in collageCells {
             if cell.id == 3 {
                 let polyWidth = cell.frame.width
@@ -211,7 +219,6 @@ open class CollageView: UIView {
                 cell.layer.shouldRasterize = true
                 cell.isOpaque = true
                 cell.layer.addSublayer(cell.drawHeartsBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 4, sides: 6))
-                
             }
         }
     }

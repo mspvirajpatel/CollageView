@@ -12,15 +12,9 @@ import UIKit
 class CollageViewT101: CollageView {
     
     override func initBaseLines() {
-        
         // initialize baseline
-        
         self.initCells()
-        
     }
-    
-    var polyWidth : CGFloat = 80.0
-    var polyHeight : CGFloat = 80.0
     
     private func initCells() {
         
@@ -36,58 +30,5 @@ class CollageViewT101: CollageView {
         self.marginLeftTopContraints += [lc01,lc02]
         self.marginRightBottomContraints += [lc03,lc04]
         self.collageCells += [cell01]
-        self.layoutSubviews()
-        self.layoutIfNeeded()
-        cell01.layoutSubviews()
-        cell01.layoutIfNeeded()
-     
-//        polyWidth = self.bounds.width
-//        polyHeight = self.bounds.height
-//        
-//        cell01.layer.mask  = cell01.drawRoundedHex(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 12)
-//        
-//        cell01.layer.masksToBounds = false
-//        cell01.layer.shouldRasterize = true
-//        cell01.isOpaque = true
-//        cell01.layer.addSublayer(cell01.drawRoundedBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 12, lineWidth: 12))
-        
-        //        let octagon = Octagonic(view: cell01, image: cell01.photoView, color: UIColor.red, offset: 0)
-    }
-    
-    public func roundedPolygonPath(rect: CGRect, lineWidth: CGFloat, sides: NSInteger, cornerRadius: CGFloat, rotationOffset: CGFloat = 0) -> UIBezierPath {
-        let path = UIBezierPath()
-        let theta: CGFloat = CGFloat(2.0 * .pi) / CGFloat(sides) // How much to turn at every corner
-        let _: CGFloat = cornerRadius * tan(theta / 2.0)     // Offset from which to start rounding corners
-        let width = min(rect.size.width, rect.size.height)        // Width of the square
-        
-        let center = CGPoint(x: rect.origin.x + width / 2.0, y: rect.origin.y + width / 2.0)
-        
-        let radius = (width - lineWidth + cornerRadius - (cos(theta) * cornerRadius)) / 2.0
-        
-        var angle = CGFloat(rotationOffset)
-        
-        let corner = CGPoint.init(x: center.x + (radius - cornerRadius) * cos(angle), y: center.y + (radius - cornerRadius) * sin(angle))
-        path.move(to: CGPoint.init(x: corner.x + cornerRadius * cos(angle + theta), y: corner.y + cornerRadius * sin(angle + theta)))
-        
-        for _ in 0..<sides {
-            angle += theta
-            
-            let corner = CGPoint.init(x: center.x + (radius - cornerRadius) * cos(angle), y: center.y + (radius - cornerRadius) * sin(angle))
-            let tip = CGPoint.init(x: center.x + radius * cos(angle), y: center.y + radius * sin(angle))
-            let start = CGPoint.init(x: corner.x + cornerRadius * cos(angle - theta), y: corner.y + cornerRadius * sin(angle - theta))
-            let end = CGPoint.init(x: corner.x + cornerRadius * cos(angle + theta), y: corner.y + cornerRadius * sin(angle + theta))
-            
-            path.addLine(to: start)
-            path.addQuadCurve(to: end, controlPoint: tip)
-        }
-        
-        path.close()
-        
-        // Move the path to the correct origins
-        let bounds = path.bounds
-        let transform = CGAffineTransform(translationX: -bounds.origin.x + rect.origin.x + lineWidth / 2.0, y: -bounds.origin.y + rect.origin.y + lineWidth / 2.0)
-        path.apply(transform)
-        
-        return path
     }
 }
