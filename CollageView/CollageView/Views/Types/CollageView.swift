@@ -210,6 +210,7 @@ open class CollageView: UIView {
                 cell.layer.masksToBounds = false
                 cell.layer.shouldRasterize = true
                 cell.isOpaque = true
+                cell.layer.addSublayer(cell.drawHeartsBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 4, sides: 6))
                 
             }
         }

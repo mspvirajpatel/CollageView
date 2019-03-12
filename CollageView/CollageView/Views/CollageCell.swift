@@ -162,6 +162,17 @@ class CollageCell: UIView {
         return borderLayer
     }
     
+    func drawHeartsBorder(borderLayer:CAShapeLayer,width:CGFloat,height:CGFloat, cornerRadius:Float, lineWidth:CGFloat, sides:Int = 6)->CAShapeLayer{
+        let crect = CGRect(x: 0, y: 0, width: width, height: height)
+        let path = roundedHeartsPathWithRect(square: crect, lineWidth: 0, sides: sides, cornerRadius: cornerRadius)
+        borderLayer.path = path.cgPath
+        borderLayer.lineWidth = lineWidth
+        let grayBorder = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 1.0)
+        borderLayer.strokeColor = grayBorder.cgColor
+        borderLayer.fillColor = UIColor.clear.cgColor
+        borderLayer.borderWidth = 0
+        return borderLayer
+    }
     
     func drawHearts(shapeLayer:CAShapeLayer,width:CGFloat,height:CGFloat, cornerRadius:Float, sides:Int = 6)->CAShapeLayer{
         let crect = CGRect(x: 0, y: 0, width: width, height: height)
