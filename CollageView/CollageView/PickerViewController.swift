@@ -45,7 +45,7 @@ class PickerViewController: UIViewController {
     
     let cachingImageManager = PHCachingImageManager()
     
-    fileprivate var collageItems : [CollageViewType] = [.t405,.t404,.t101,.t201,.t202,.t301,.t302,.t303,.t401,.t402,.t403,.t801,.t802,.t501,.t502,.t601,.t602]
+    fileprivate var collageItems : [CollageViewType] = [.t304,.t405,.t404,.t101,.t201,.t202,.t301,.t302,.t303,.t401,.t402,.t403,.t801,.t802,.t501,.t502,.t601,.t602]
     fileprivate var assets = [PHAsset]()
     fileprivate var selectedItemSet = Set<CLOCellItem>()
     fileprivate var selectedItemArray = [CLOCellItem]()
@@ -385,6 +385,8 @@ extension PickerViewController : SwipeViewDataSource {
             collage.setViewHaxa(isRoundedHex: true)
         } else if collageItems[index] == .t405 {
             collage.setViewHaxa()
+        } else if collageItems[index] == .t304 {
+            collage.setHeartView()
         }
         
         return view

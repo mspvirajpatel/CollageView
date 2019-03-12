@@ -33,8 +33,11 @@ class CollageViewT405: CollageView {
         baseLine02.moveType = .leftRight
         baseLine02.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(baseLine02)
-        
-        let lc05 = NSLayoutConstraint(item: baseLine02, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
+      
+//        let lc01 = NSLayoutConstraint(item: baseLine01, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
+//        let lc02 = NSLayoutConstraint(item: baseLine01, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
+//        //        let lc02 = NSLayoutConstraint(item: baseLine01, attribute: .centerY, relatedBy: .equal, toItem: self.baseLineViews[3], attribute: .centerY, multiplier: 1, constant: 0)
+        let lc05 = NSLayoutConstraint(item: baseLine02, attribute: .centerX, relatedBy: .equal, toItem: baseLine01, attribute: .centerX, multiplier: 1, constant: 0)
         let lc06 = NSLayoutConstraint(item: baseLine02, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
         let lc07 = NSLayoutConstraint(item: baseLine02, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.5, constant: 0)
         let lc08 = NSLayoutConstraint(item: baseLine02, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1/3, constant: 0)

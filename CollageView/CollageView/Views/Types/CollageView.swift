@@ -50,7 +50,7 @@ enum CollageViewType : Int {
     case t602
     case t404
     case t405
-    case t102
+    case t304
     var getInstance : CollageView {
         switch self {
         case .t101 : return CollageViewT101()
@@ -70,6 +70,7 @@ enum CollageViewType : Int {
         case .t602 : return CollageViewT602()
         case .t404 : return CollageViewT404()
         case .t405 : return CollageViewT405()
+        case .t304 : return CollageViewT304()
         default: return CollageViewT402()
         }
     }
@@ -186,22 +187,35 @@ open class CollageView: UIView {
                 cell.layer.shouldRasterize = true
                 cell.isOpaque = true
                 cell.layer.addSublayer(cell.drawRoundedBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 10, sides: 6))
+                
 //                cell.configureLayerForHexagon()
 //                let polyWidth = cell.frame.width
 //                let polyHeight = cell.frame.height
-//                //                    cell.maskHexagonView(cornerRadius: 02, lineWidth: 10)
-//
-//                cell.layer.mask  = cell.drawRoundedHex(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02)
+//                cell.layer.mask = cell.drawHearts(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, sides: 6)
 //
 //                cell.layer.masksToBounds = false
 //                cell.layer.shouldRasterize = true
 //                cell.isOpaque = true
-//                cell.layer.addSublayer(cell.drawRoundedBorder(borderLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 10))
             }
         }
-        
     }
     
+    func setHeartView() {
+        
+        for cell in collageCells {
+            if cell.id == 3 {
+                let polyWidth = cell.frame.width
+                let polyHeight = cell.frame.height
+                //                    cell.maskHexagonView(cornerRadius: 02, lineWidth: 10)
+                
+                cell.layer.mask = cell.drawHearts(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, sides:  10)
+                cell.layer.masksToBounds = false
+                cell.layer.shouldRasterize = true
+                cell.isOpaque = true
+                
+            }
+        }
+    }
 }
 
 extension CollageView : CollageCellDelegate {

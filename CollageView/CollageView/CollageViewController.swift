@@ -168,6 +168,8 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
                 self.collageView.setViewHaxa()
             } else if self.collageType == .t602 {
                 cornerRedius(views: collageView.collageCells)
+            } else if self.collageType == .t304 {
+                self.collageView.setHeartView()
             }
             print("final Rect: \(self.collageView.frame)")
         }
