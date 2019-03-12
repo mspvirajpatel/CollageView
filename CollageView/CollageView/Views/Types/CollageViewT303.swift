@@ -73,28 +73,7 @@ class CollageViewT303: CollageView {
         self.collageCells[2].transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/4))
         self.collageCells[2].photoView.transform = CGAffineTransform(rotationAngle: -CGFloat(Double.pi/4))
         self.collageCells[2].photoView.transform = self.collageCells[2].photoView.transform.scaledBy(x: 1.4, y: 1.4)
-        // self.initHandles()
+    
     }
     
-    
-    private func initHandles() {
-        
-        let cell01 = self.collageCells[0]
-        var handle01 : LineHandleView!
-        
-        handle01 = LineHandleView()
-        self.addSubview(handle01)
-        handle01.initialize(attach: .right, blview: self.baseLineViews[0], cell: cell01)
-        handle01.datasource = self
-        cell01.setHandles(handles: [handle01])
-        
-        let cell02 = self.collageCells[1]
-        handle01 = LineHandleView()
-        self.addSubview(handle01)
-        handle01.initialize(attach: .left, blview: self.baseLineViews[0], cell: cell02)
-        handle01.datasource = self
-        
-        cell02.setHandles(handles: [handle01])
-        
-    }
 }
