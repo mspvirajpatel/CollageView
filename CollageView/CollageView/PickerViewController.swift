@@ -315,7 +315,6 @@ extension PickerViewController : SwipeViewDelegate {
             
             snapView.delegate = self
             
-            
             let snap = snapView.asImage(scale: 1.0)
             let startRect = collage.superview!.convert(collage.frame, to: self.view)
             print("start Rect: \(startRect)")
@@ -341,24 +340,20 @@ extension PickerViewController : SwipeViewDelegate {
 extension PickerViewController : SwipeViewDataSource {
     
     func numberOfItems(in swipeView: SwipeView!) -> Int {
-        
         return collageItems.count
     }
     
     func swipeViewItemSize(_ swipeView: SwipeView!) -> CGSize {
-        
         let h = swipeView.frame.size.height
         return CGSize(width: h * 0.8, height: h)
     }
-    
-    
     
     func swipeView(_ swipeView: SwipeView!, viewForItemAt index: Int, reusing view: UIView!) -> UIView! {
         
         let h = swipeView.frame.size.height
         let rect = CGRect(origin: .zero, size: CGSize(width: h * 0.8, height: h))
         let view = UIView(frame: rect)
-        view.backgroundColor = .clear//UIColor.generateRandomColor()
+        view.backgroundColor = .clear
         
         let collage = collageItems[index].getInstance
         collage.tag = 123

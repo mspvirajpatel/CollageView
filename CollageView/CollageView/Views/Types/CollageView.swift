@@ -206,8 +206,6 @@ open class CollageView: UIView {
             if cell.id == 3 {
                 let polyWidth = cell.frame.width
                 let polyHeight = cell.frame.height
-                //                    cell.maskHexagonView(cornerRadius: 02, lineWidth: 10)
-                
                 cell.layer.mask = cell.drawHearts(shapeLayer: CAShapeLayer(), width: polyWidth, height: polyHeight, cornerRadius: 02, sides:  10)
                 cell.layer.masksToBounds = false
                 cell.layer.shouldRasterize = true
