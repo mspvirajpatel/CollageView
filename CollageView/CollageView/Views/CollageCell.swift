@@ -122,23 +122,37 @@ class CollageCell: UIView {
         self.delegate?.didSelectCell(cellId: id)
     }
    
-    func drawRoundedBorder(borderLayer:CAShapeLayer,width:CGFloat,height:CGFloat, cornerRadius:Float, lineWidth:CGFloat, sides:Int = 6, type: ShapeType)->CAShapeLayer{
-        var crect = CGRect(x: 0, y: 0, width: width, height: height - ((height * 25)/233))
+    func drawRoundedBorder(width:CGFloat,height:CGFloat, cornerRadius:Float = 0, lineWidth:CGFloat, sides:Int = 6, type: ShapeType)->CAShapeLayer{
+        let borderLayer = CAShapeLayer()
+        var crect = CGRect(x: 0, y: 0, width: width, height: height - ((height * 30)/233))
         if type == .heart {
             crect = CGRect(x: 0, y: 0, width: width, height: height)
         }
         let path = roundedPolygonPathWithRect(square: crect, lineWidth: 0, sides: sides, cornerRadius: cornerRadius, type: type)
+        switch type {
+        case .heart:
+            borderLayer.name = "heartBorderLayer"
+            break
+        case .hexa:
+            borderLayer.name = "hexaBorderLayer"
+            break
+        case .star:
+            borderLayer.name = "starBorderLayer"
+            break
+        default:
+            break
+        }
         borderLayer.path = path.cgPath
         borderLayer.lineWidth = lineWidth
-        let grayBorder = UIColor(red: 235.0/255.0, green: 235.0/255.0, blue: 235.0/255.0, alpha: 1.0)
-        borderLayer.strokeColor = grayBorder.cgColor
+        borderLayer.strokeColor = UIColor.white.cgColor
         borderLayer.fillColor = UIColor.clear.cgColor
         borderLayer.borderWidth = 0
         return borderLayer
     }
 
-    func drawRoundedHex(shapeLayer:CAShapeLayer,width:CGFloat,height:CGFloat, cornerRadius:Float, sides:Int = 6, shapeMask: Bool = true, type: ShapeType)->CAShapeLayer{
-        var crect = CGRect(x: 0, y: 0, width: width, height: height - ((height * 25)/233))
+    func drawRoundedHex(width:CGFloat,height:CGFloat, cornerRadius:Float = 0, sides:Int = 6, shapeMask: Bool = true, type: ShapeType)->CAShapeLayer{
+        let shapeLayer = CAShapeLayer()
+        var crect = CGRect(x: 0, y: 0, width: width, height: height - ((height * 30)/233))
         if type == .heart {
             crect = CGRect(x: 0, y: 0, width: width, height: height)
         } else if type == .star {
@@ -146,14 +160,29 @@ class CollageCell: UIView {
         }
         
         let path = roundedPolygonPathWithRect(square: crect, lineWidth: 0, sides: sides, cornerRadius: cornerRadius, type: type)
+        switch type {
+        case .heart:
+            shapeLayer.name = "heart"
+            break
+        case .hexa:
+            shapeLayer.name = "hexa"
+            break
+        case .star:
+            shapeLayer.name = "star"
+            break
+        default:
+            break
+        }
+       
         shapeLayer.path = path.cgPath
         if shapeMask {
             shapeLayer.fillRule = CAShapeLayerFillRule.nonZero
         } else  {
             shapeLayer.lineWidth = 2
-            shapeLayer.strokeColor = UIColor.gray.cgColor
+            shapeLayer.strokeColor = UIColor.white.cgColor
             shapeLayer.fillColor = UIColor.clear.cgColor
         }
+        
 //
 //        shapeLayer.fillRule = CAShapeLayerFillRule.nonZero
 //        shapeLayer.strokeColor = UIColor.clear.cgColor

@@ -45,7 +45,7 @@ class PickerViewController: UIViewController {
     
     let cachingImageManager = PHCachingImageManager()
     
-    fileprivate var collageItems : [CollageViewType] = [.t406,.t304,.t405,.t404,.t101,.t201,.t202,.t301,.t302,.t303,.t401,.t402,.t403,.t801,.t802,.t501,.t502,.t601,.t602]
+    fileprivate var collageItems : [CollageViewType] = [.t406,.t304,.t404,.t101,.t201,.t202,.t301,.t302,.t303,.t401,.t402,.t403,.t801,.t802,.t501,.t502,.t601,.t602]
     fileprivate var assets = [PHAsset]()
     fileprivate var selectedItemSet = Set<CLOCellItem>()
     fileprivate var selectedItemArray = [CLOCellItem]()
@@ -184,6 +184,7 @@ extension PickerViewController : UICollectionViewDelegateFlowLayout {
         return size
     }
 }
+
 extension PickerViewController : UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -228,7 +229,6 @@ extension PickerViewController : UICollectionViewDelegate {
             }
         }
     }
-    
 }
 
 extension PickerViewController : UICollectionViewDataSource {
@@ -297,50 +297,14 @@ extension PickerViewController : SwipeViewDelegate {
     func swipeView(_ swipeView: SwipeView!, didSelectItemAt index: Int) {
         
         guard self.selectedItemSet.count > 0 else { return }
+      
+        let collageItem = self.collageItems[index]
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "CollageVC") as! CollageViewController
+        vc.photoImages = self.selectedImageArray
+        vc.collageType = collageItem
         
-        if let cell = swipeView.itemView(at: index) {
-            guard let collage = cell.viewWithTag(123) as? CollageView else { return }
-            guard self.selectedImageArray.count > 0 else { return }
-            self.view.layoutIfNeeded()
-           
-            let collageItem = self.collageItems[index]
-            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = mainStoryboard.instantiateViewController(withIdentifier: "CollageVC") as! CollageViewController
-            vc.photoImages = self.selectedImageArray
-            vc.collageType = collageItem
-            
-            self.navigationController?.pushViewController(vc, animated: true)
-
-//            
-//            let rect = CGRect(origin: .zero, size: CGSize(width: collage.bounds.size.width * 4.0, height: collage.bounds.size.height * 4.0))
-//            let snapView = collageItem.getInstance
-//            snapView.frame = rect
-//            snapView.setPhotos(photos: self.selectedImageArray)
-//            snapView.updateMargin(val: 3.0 * 2.0)
-//            snapView.updatePadding(val: 1.5 * 2.0)
-//            self.view.insertSubview(snapView, belowSubview: self.collectionView)
-//            
-//            snapView.delegate = self
-//            
-//            let snap = snapView.asImage(scale: 1.0)
-//            let startRect = collage.superview!.convert(collage.frame, to: self.view)
-//            print("start Rect: \(startRect)")
-//            self.collageTransition = CollageTransition()
-//            self.collageTransition.snapImage = snap
-//            self.collageTransition.startRect = startRect
-//            self.collageTransition.originalCollageView = collage
-//            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = mainStoryboard.instantiateViewController(withIdentifier: "CollageVC") as! CollageViewController
-//            vc.photoImages = self.selectedImageArray
-//            vc.collageType = collageItem
-////            vc.transitioningDelegate = self
-////            vc.modalPresentationStyle = .custom
-//           
-////            self.navigationController?.pushViewController(vc, animated: true)
-//            self.present(vc, animated: true, completion: {
-//                snapView.removeFromSuperview()
-//            })
-        }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

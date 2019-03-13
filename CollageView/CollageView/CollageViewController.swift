@@ -120,8 +120,8 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         _ = self.collageView
-        collageView.updateMargin(val: 0)
-        collageView.updatePadding(val: 0)
+        collageView.updateMargin(val: 3.0)
+        collageView.updatePadding(val: 1.5)
         collageView.layoutSubviews()
         collageView.layoutIfNeeded()
         collageView.collageType = collageType
@@ -153,18 +153,14 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func handleLongPress(_ longRecognizer: UILongPressGestureRecognizer?) {
-        //позиция в collectionView
+
         let locationPointInCollection: CGPoint = longRecognizer?.location(in: selectedPhotoCV) ?? CGPoint.zero
-        //позиция на экране
         let locationPointInView: CGPoint = longRecognizer?.location(in: view) ?? CGPoint.zero
         
-        
         if longRecognizer?.state == .began {
-            
             let indexPathOfMovingCell: IndexPath? = selectedPhotoCV.indexPathForItem(at: locationPointInCollection)
             photoIndex = indexPathOfMovingCell?.row ?? 0
             let image = self.photoImages?[photoIndex]
-            
             
             let frame = CGRect(x: locationPointInView.x, y: locationPointInView.y, width: 150.0, height: 150.0)
             movingCell = UIImageView(frame: frame)
@@ -223,13 +219,8 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
                     cell01.layer.borderWidth = 20
                     cell01.layer.borderColor = UIColor.clear.cgColor
                     
-                    
-                    // hold(inContainer: imgView, withIndex: photoIndex)
-                    // tuneImageView(imgView, withCenterPont: originInCollageView)
-                    
                     collageView.addSubview(cell01)
                     movingCell?.removeFromSuperview()
-                    
                 }
                 else {
                     for i in collageView.subviews.reversed() {
