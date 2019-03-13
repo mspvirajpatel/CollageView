@@ -40,7 +40,6 @@ class PhotoScrollView: UIView {
         self.photoImage = UIImageView(frame: view.bounds)
         self.photoImage.contentMode = .scaleAspectFill
         self.photoImage.translatesAutoresizingMaskIntoConstraints = false
-        //        self.photoImage.layer.anchorPoint = CGPoint(x: 0.0, y: 0.0)
         view.addSubview(self.photoImage)
         xConst = NSLayoutConstraint(item: self.photoImage, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 0)
         yConst = NSLayoutConstraint(item: self.photoImage, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 0)
@@ -48,31 +47,8 @@ class PhotoScrollView: UIView {
         hConst = NSLayoutConstraint(item: self.photoImage, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([xConst,yConst,wConst,hConst])
         
-        
         return view
     } ()
-    
-    
-    func reAutoLayoutSet(view: UIView) {
-        let xConst = NSLayoutConstraint(item: view, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
-        let yConst = NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
-        let wConst = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
-        let hConst = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
-        NSLayoutConstraint.activate([xConst,yConst,wConst,hConst])
-        self.layoutSubviews()
-        self.layoutIfNeeded()
-    }
-    
-    func reAutoLayoutImageViewSet(view: UIView, imageView: UIImageView) {
-        let xConst = NSLayoutConstraint(item: imageView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 0)
-        let yConst = NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 0)
-        let wConst = NSLayoutConstraint(item: imageView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0)
-        let hConst = NSLayoutConstraint(item: imageView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
-        NSLayoutConstraint.activate([xConst,yConst,wConst,hConst])
-        self.layoutSubviews()
-        self.layoutIfNeeded()
-    }
-    
     
     private var imgSize : CGSize = .zero
     private var prevSize : CGSize = .zero
@@ -87,19 +63,14 @@ class PhotoScrollView: UIView {
         self.initialize()
     }
     
-    
     override func layoutSubviews() {
         super.layoutSubviews()
-        //        print("layout subview called")
         self.calculateZoomScale()
     }
     
-    
     private func calculateZoomScale() {
-        
         guard imgSize != .zero else { return }
         let size = self.bounds.size
-        //        print("re-calculate zoom scale: \(size)")
         let W = size.width
         let H = size.height
         let w = imgSize.width
@@ -115,12 +86,10 @@ class PhotoScrollView: UIView {
     }
     
     private func initialize() {
-        
         _ = self.scrollView
     }
     
     func setPhoto(img : UIImage) {
-        
         self.photoImage.image = img
         self.imgSize = img.size
         self.calculateZoomScale()

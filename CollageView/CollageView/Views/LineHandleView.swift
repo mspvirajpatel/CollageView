@@ -60,9 +60,7 @@ class LineHandleView: UIView {
             wConst = NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: thick)
             hConst = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: cell, attribute: .height, multiplier: 1.0, constant: 0)
             
-            
         } else {
-            
             if attach == .top {
                 yConst = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: cell, attribute: .top, multiplier: 1, constant: -adjust)
             } else {
@@ -73,8 +71,6 @@ class LineHandleView: UIView {
             hConst = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: thick)
         }
         NSLayoutConstraint.activate([xConst,yConst,wConst,hConst])
-        
-        
         
         let notch = UIView()
         notch.backgroundColor = UIColor.init(hex: 0x65dcff)
@@ -96,16 +92,13 @@ class LineHandleView: UIView {
         }
         NSLayoutConstraint.activate([xConst,yConst,wConst,hConst])
         
-        
         self.addGestureRecognizer(self.panGesture)
     }
-    
     
     @objc func detectPan(_ gesture : UIPanGestureRecognizer) {
         
         let loc1 = gesture.location(in: self)
         var loc = self.convert(loc1, to: self.superview)
-        
         guard let ds = self.datasource else { return }
         let maxSize = ds.sizeView()
         
@@ -151,7 +144,6 @@ class LineHandleView: UIView {
             }
         }
     }
-    
 }
 
 extension LineHandleView : UIGestureRecognizerDelegate {
@@ -180,5 +172,4 @@ extension LineHandleView : UIGestureRecognizerDelegate {
         }
         return true
     }
-    
 }

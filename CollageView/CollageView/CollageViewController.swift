@@ -77,7 +77,7 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
         let size = CGSize(width: len, height: len * self.collageRatio)
         
         view.frame = CGRect(x: (self.containerView.frame.size.width - size.width) / 2.0, y: (self.containerView.frame.size.height - size.height) / 2.0, width: size.width, height: size.height)
-        view.isHidden = true
+        view.isHidden = false
         view.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(view)
         
@@ -86,17 +86,6 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
         let lc03 = NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: self.containerView, attribute: .width, multiplier: 1.0, constant: 0)
         let lc04 = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: self.containerView, attribute: .height, multiplier: self.collageRatio, constant: 0)
         NSLayoutConstraint.activate([ lc01, lc02, lc03, lc04])
-        
-        //        let shadowView = ShadowView(frame: CGRect(origin: .zero, size: size))
-        //        shadowView.translatesAutoresizingMaskIntoConstraints = false
-        //        shadowView.backgroundColor = .clear
-        //        view.addSubview(shadowView)
-        //
-        //        var lConst = NSLayoutConstraint(item: shadowView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 0)
-        //        var rConst = NSLayoutConstraint(item: shadowView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 0)
-        //        var tConst = NSLayoutConstraint(item: shadowView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0)
-        //        var bConst = NSLayoutConstraint(item: shadowView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
-        //        NSLayoutConstraint.activate([ lConst, rConst, tConst, bConst])
         
         return view
     } ()
@@ -113,14 +102,7 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-    }
-    
     @IBAction func progressChanged(_ sender: Any) {
-        
         let progress = CGFloat(Int(progressBar.value * 30.0))
         //        print("progress change: \(progress)")
         self.collageView.updateBorder(val: progress)
@@ -138,8 +120,10 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         _ = self.collageView
-        collageView.updateMargin(val: 3.0)
-        collageView.updatePadding(val: 1.5)
+        collageView.updateMargin(val: 0)
+        collageView.updatePadding(val: 0)
+        collageView.layoutSubviews()
+        collageView.layoutIfNeeded()
         collageView.collageType = collageType
         if let imgs = self.photoImages {
             self.collageView.setPhotos(photos: imgs)
@@ -151,6 +135,8 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
                 cornerRedius(views: collageView.collageCells)
             } else if self.collageType == .t304 {
                 self.collageView.setHeartView()
+            } else if self.collageType == .t406 {
+                self.collageView.setTransferentView(isLargeSize: true)
             }
             print("final Rect: \(self.collageView.frame)")
         }
@@ -163,9 +149,7 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
         if collageType == .t101 {
             isFreeForm = true
         }
-        
         self.view.backgroundColor = UIColor.white
-        
     }
     
     @objc func handleLongPress(_ longRecognizer: UILongPressGestureRecognizer?) {
@@ -289,30 +273,6 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
      }
      */
     
-}
-
-class ShadowView : UIView {
-    
-    lazy var shadowLayer : CALayer = {
-        
-        // constants
-        let radius: CGFloat = 24.0, offset = 0.0
-        // shadow layer
-        let slayer = CALayer()
-        slayer.shadowColor = UIColor.gray.cgColor
-        slayer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: radius).cgPath
-        slayer.shadowOffset = CGSize(width: offset, height: offset)
-        slayer.shadowOpacity = 0.4
-        slayer.shadowRadius = 8.0
-        self.layer.addSublayer(slayer)
-        
-        return slayer
-    } ()
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        shadowLayer.frame = self.bounds
-    }
 }
 
 extension UIView {
@@ -486,86 +446,5 @@ extension CGFloat {
     func radians() -> CGFloat {
         let b = CGFloat(Double.pi) * (self/180)
         return b
-    }
-}
-
-func polygonPointArray(sides:Int,x:CGFloat,y:CGFloat,radius:CGFloat,offset:CGFloat)->[CGPoint] {
-    let angle = (360/CGFloat(sides)).radians()
-    let cx = x // x origin
-    let cy = y // y origin
-    let r = radius // radius of circle
-    var i = 0
-    var points = [CGPoint]()
-    while i <= sides {
-        let xpo = cx + r * cos(angle * CGFloat(i) - offset.radians())
-        let ypo = cy + r * sin(angle * CGFloat(i) - offset.radians())
-        points.append(CGPoint(x: xpo, y: ypo))
-        i = i + 1
-    }
-    return points
-}
-
-func polygonPath(x:CGFloat, y:CGFloat, radius:CGFloat, sides:Int, offset: CGFloat) -> CGPath {
-    let path = CGMutablePath()
-    let points = polygonPointArray(sides: sides,x: x,y: y,radius: radius, offset: offset)
-    let cpg = points[0]
-    path.move(to: cpg)
-    for p in points {
-        path.addLine(to: p)
-    }
-    
-    path.closeSubpath()
-    return path
-}
-
-func drawPolygonBezier(x:CGFloat, y:CGFloat, radius:CGFloat, sides:Int, color:UIColor, offset:CGFloat) -> UIBezierPath {
-    let path = polygonPath(x: x, y: y, radius: radius, sides: sides, offset: offset)
-    let bez = UIBezierPath(cgPath: path)
-    // no need to convert UIColor to CGColor when using UIBezierPath
-    color.setFill()
-    bez.fill()
-    return bez
-}
-
-func drawPolygonUsingPath(ctx:CGContext, x:CGFloat, y:CGFloat, radius:CGFloat, sides:Int, color:UIColor, offset:CGFloat) {
-    let path = polygonPath(x: x, y: y, radius: radius, sides: sides, offset: offset)
-    ctx.addPath(path)
-    let cgcolor = color.cgColor
-    ctx.setFillColor(cgcolor)
-    ctx.fillPath()
-}
-
-func drawPolygon(ctx:CGContext, x:CGFloat, y:CGFloat, radius:CGFloat, sides:Int, color:UIColor, offset:CGFloat) {
-    
-    let points = polygonPointArray(sides: sides,x: x,y: y,radius: radius, offset: offset)
-    ctx.addLines(between: points)
-    
-    let cgcolor = color.cgColor
-    ctx.setFillColor(cgcolor)
-    ctx.fillPath()
-}
-func drawPolygonLayer(x:CGFloat, y:CGFloat, radius:CGFloat, sides:Int, color:UIColor, offset:CGFloat) -> CAShapeLayer {
-    
-    let shape = CAShapeLayer()
-    shape.path = polygonPath(x: x, y: y, radius: radius, sides: sides, offset: offset)
-    shape.fillColor = color.cgColor
-    return shape
-    
-}
-
-
-class NewView: UIView {
-    
-    
-    override func draw(_ rect:CGRect)
-    {
-        let ctx = UIGraphicsGetCurrentContext()
-        
-        drawPolygonUsingPath(ctx: ctx!, x: rect.midX ,y: rect.midY,radius: rect.width/3, sides: 3, color: UIColor.blue, offset:0)
-        
-        drawPolygonBezier(x: rect.midX,y: rect.midY ,radius: rect.width/4, sides: 4, color: UIColor.yellow, offset:0)
-        
-        drawPolygon(ctx: ctx!, x: rect.midX,y: rect.midY,radius: rect.width/5, sides: 6, color: UIColor.green, offset:0)
-        
     }
 }

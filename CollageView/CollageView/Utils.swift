@@ -9,28 +9,36 @@
 import Foundation
 import UIKit
 
-//class Utils : NSObject {
-//
-//    class func getZeroHourMinuteSecond(date : Date) -> Date? {
-//        var comps = cal.dateComponents(calUnits, from: date)
-//        comps.setValue(0, for: .hour)
-//        comps.setValue(0, for: .minute)
-//        comps.setValue(0, for: .second)
-//
-//        return cal.date(from: comps)
-//    }
-//
-//    class func getFirstDayOfMonth(date : Date) -> Date? {
-//
-//        var comps = cal.dateComponents(calUnits, from: date)
-//        comps.setValue(1, for: .day)
-//        comps.setValue(0, for: .hour)
-//        comps.setValue(0, for: .minute)
-//        comps.setValue(0, for: .second)
-//
-//        return cal.date(from: comps)
-//    }
-//}
+extension UIView {
+    
+    // Using a function since `var image` might conflict with an existing variable
+    // (like on `UIImageView`)
+    func asImage(scale : CGFloat) -> UIImage {
+        let size = CGSize(width: bounds.size.width * scale, height: bounds.size.height * scale)
+        let rect = CGRect(origin: .zero, size: size)
+        
+        let renderer = UIGraphicsImageRenderer(size: size)
+        return renderer.image { rendererContext in
+            //            layer.render(in: rendererContext.cgContext)
+            self.drawHierarchy(in: rect, afterScreenUpdates: true)
+        }
+    }
+}
+
+
+func cornerRedius(views: [UIView]) {
+    for view in views {
+        if view.frame.height > view.frame.width
+        {
+            view.layer.cornerRadius = view.frame.width / 2
+        }
+        else {
+            view.layer.cornerRadius = view.frame.height / 2
+        }
+        view.layer.masksToBounds = true
+        view.clipsToBounds = true
+    }
+}
 
 extension UIColor {
     
@@ -113,7 +121,6 @@ extension UIColor {
         return String(format:"#%06x", rgb)
     }
     
-    
     func toInt() -> UInt32 {
         
         var r:CGFloat = 0
@@ -127,50 +134,7 @@ extension UIColor {
         
         return UInt32(rgb)
     }
-    
 }
-
-
-extension UIImage {
-    func tabBarImageWithCustomTint(tintColor: UIColor) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
-        let context: CGContext = UIGraphicsGetCurrentContext()!
-        
-        context.translateBy(x: 0, y: self.size.height)
-        context.scaleBy(x: 1.0, y: -1.0)
-        context.setBlendMode(.normal)
-        let rect: CGRect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)
-        
-        context.clip(to: rect, mask: self.cgImage!)
-        
-        tintColor.setFill()
-        context.fill(rect)
-        
-        var newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        newImage = newImage.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-        return newImage
-    }
-    
-    func resizedImage(newSize: CGSize) -> UIImage {
-        // Guard newSize is different
-        guard self.size != newSize else { return self }
-        
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0);
-        _ = UIGraphicsGetCurrentContext()
-        self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-        // white border
-        //        ctx?.setLineWidth(50.0)
-        //        ctx?.setStrokeColor(UIColor.white.cgColor)
-        //        ctx?.stroke(CGRect(origin: .zero, size: newSize))
-        
-        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-}
-
 
 extension String {
     
@@ -218,5 +182,4 @@ extension String {
         let end = index(start, offsetBy: range.upperBound - range.lowerBound)
         return String(self[start ..< end])
     }
-    
 }

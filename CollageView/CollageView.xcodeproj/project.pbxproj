@@ -41,6 +41,7 @@
 		824413D22236533900AF97EB /* CollageViewT404.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824413D12236533900AF97EB /* CollageViewT404.swift */; };
 		824413D4223684E800AF97EB /* CollageViewT405.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824413D3223684E800AF97EB /* CollageViewT405.swift */; };
 		826AF37022378426008CF561 /* CollageViewT304.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826AF36F22378426008CF561 /* CollageViewT304.swift */; };
+		826AF3722237D8C3008CF561 /* CollageViewT406.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826AF3712237D8C3008CF561 /* CollageViewT406.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		824413D12236533900AF97EB /* CollageViewT404.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT404.swift; sourceTree = "<group>"; };
 		824413D3223684E800AF97EB /* CollageViewT405.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT405.swift; sourceTree = "<group>"; };
 		826AF36F22378426008CF561 /* CollageViewT304.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT304.swift; sourceTree = "<group>"; };
+		826AF3712237D8C3008CF561 /* CollageViewT406.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT406.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				824413C322363A1A00AF97EB /* CollageViewT403.swift */,
 				824413D12236533900AF97EB /* CollageViewT404.swift */,
 				824413D3223684E800AF97EB /* CollageViewT405.swift */,
+				826AF3712237D8C3008CF561 /* CollageViewT406.swift */,
 				824413C522363A2E00AF97EB /* CollageViewT801.swift */,
 				824413C722363A3800AF97EB /* CollageViewT802.swift */,
 				824413C922363A4000AF97EB /* CollageViewT501.swift */,
@@ -259,6 +262,7 @@
 				824413D22236533900AF97EB /* CollageViewT404.swift in Sources */,
 				824413C022363A0800AF97EB /* CollageViewT401.swift in Sources */,
 				824413CC22363A4900AF97EB /* CollageViewT502.swift in Sources */,
+				826AF3722237D8C3008CF561 /* CollageViewT406.swift in Sources */,
 				824413C422363A1A00AF97EB /* CollageViewT403.swift in Sources */,
 				824413CA22363A4000AF97EB /* CollageViewT501.swift in Sources */,
 				826AF37022378426008CF561 /* CollageViewT304.swift in Sources */,

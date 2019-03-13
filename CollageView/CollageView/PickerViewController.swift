@@ -45,7 +45,7 @@ class PickerViewController: UIViewController {
     
     let cachingImageManager = PHCachingImageManager()
     
-    fileprivate var collageItems : [CollageViewType] = [.t304,.t405,.t404,.t101,.t201,.t202,.t301,.t302,.t303,.t401,.t402,.t403,.t801,.t802,.t501,.t502,.t601,.t602]
+    fileprivate var collageItems : [CollageViewType] = [.t406,.t304,.t405,.t404,.t101,.t201,.t202,.t301,.t302,.t303,.t401,.t402,.t403,.t801,.t802,.t501,.t502,.t601,.t602]
     fileprivate var assets = [PHAsset]()
     fileprivate var selectedItemSet = Set<CLOCellItem>()
     fileprivate var selectedItemArray = [CLOCellItem]()
@@ -160,7 +160,6 @@ class PickerViewController: UIViewController {
 
 extension PickerViewController : UICollectionViewDelegateFlowLayout {
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         
         return CGSize(width: collectionView.frame.size.width, height: 60.0)
@@ -268,7 +267,6 @@ extension PickerViewController : UICollectionViewDataSource {
     }
 }
 
-
 extension PickerViewController : UIViewControllerTransitioningDelegate {
     
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -286,6 +284,7 @@ extension PickerViewController : UIViewControllerTransitioningDelegate {
     }
     
 }
+
 extension PickerViewController : CollageViewDelegate {
     
     func didSelectCell(cellId: Int) {
@@ -303,35 +302,44 @@ extension PickerViewController : SwipeViewDelegate {
             guard let collage = cell.viewWithTag(123) as? CollageView else { return }
             guard self.selectedImageArray.count > 0 else { return }
             self.view.layoutIfNeeded()
-            
+           
             let collageItem = self.collageItems[index]
-            let rect = CGRect(origin: .zero, size: CGSize(width: collage.bounds.size.width * 4.0, height: collage.bounds.size.height * 4.0))
-            let snapView = collageItem.getInstance
-            snapView.frame = rect
-            snapView.setPhotos(photos: self.selectedImageArray)
-            snapView.updateMargin(val: 3.0 * 2.0)
-            snapView.updatePadding(val: 1.5 * 2.0)
-            self.view.insertSubview(snapView, belowSubview: self.collectionView)
-            
-            snapView.delegate = self
-            
-            let snap = snapView.asImage(scale: 1.0)
-            let startRect = collage.superview!.convert(collage.frame, to: self.view)
-            print("start Rect: \(startRect)")
-            self.collageTransition = CollageTransition()
-            self.collageTransition.snapImage = snap
-            self.collageTransition.startRect = startRect
-            self.collageTransition.originalCollageView = collage
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = mainStoryboard.instantiateViewController(withIdentifier: "CollageVC") as! CollageViewController
             vc.photoImages = self.selectedImageArray
             vc.collageType = collageItem
-            vc.transitioningDelegate = self
-            vc.modalPresentationStyle = .custom
-            //            self.navigationController?.pushViewController(vc, animated: true)
-            self.present(vc, animated: true, completion: {
-                snapView.removeFromSuperview()
-            })
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+
+//            
+//            let rect = CGRect(origin: .zero, size: CGSize(width: collage.bounds.size.width * 4.0, height: collage.bounds.size.height * 4.0))
+//            let snapView = collageItem.getInstance
+//            snapView.frame = rect
+//            snapView.setPhotos(photos: self.selectedImageArray)
+//            snapView.updateMargin(val: 3.0 * 2.0)
+//            snapView.updatePadding(val: 1.5 * 2.0)
+//            self.view.insertSubview(snapView, belowSubview: self.collectionView)
+//            
+//            snapView.delegate = self
+//            
+//            let snap = snapView.asImage(scale: 1.0)
+//            let startRect = collage.superview!.convert(collage.frame, to: self.view)
+//            print("start Rect: \(startRect)")
+//            self.collageTransition = CollageTransition()
+//            self.collageTransition.snapImage = snap
+//            self.collageTransition.startRect = startRect
+//            self.collageTransition.originalCollageView = collage
+//            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = mainStoryboard.instantiateViewController(withIdentifier: "CollageVC") as! CollageViewController
+//            vc.photoImages = self.selectedImageArray
+//            vc.collageType = collageItem
+////            vc.transitioningDelegate = self
+////            vc.modalPresentationStyle = .custom
+//           
+////            self.navigationController?.pushViewController(vc, animated: true)
+//            self.present(vc, animated: true, completion: {
+//                snapView.removeFromSuperview()
+//            })
         }
     }
     
@@ -382,41 +390,11 @@ extension PickerViewController : SwipeViewDataSource {
             collage.setViewHaxa()
         } else if collageItems[index] == .t304 {
             collage.setHeartView()
+        } else if collageItems[index] == .t406 {
+            collage.setTransferentView()
         }
         
         return view
     }
 }
 
-
-
-extension UIView {
-    
-    // Using a function since `var image` might conflict with an existing variable
-    // (like on `UIImageView`)
-    func asImage(scale : CGFloat) -> UIImage {
-        let size = CGSize(width: bounds.size.width * scale, height: bounds.size.height * scale)
-        let rect = CGRect(origin: .zero, size: size)
-        
-        let renderer = UIGraphicsImageRenderer(size: size)
-        return renderer.image { rendererContext in
-            //            layer.render(in: rendererContext.cgContext)
-            self.drawHierarchy(in: rect, afterScreenUpdates: true)
-        }
-    }
-}
-
-
-func cornerRedius(views: [UIView]) {
-    for view in views {
-        if view.frame.height > view.frame.width
-        {
-            view.layer.cornerRadius = view.frame.width / 2
-        }
-        else {
-            view.layer.cornerRadius = view.frame.height / 2
-        }
-        view.layer.masksToBounds = true
-        view.clipsToBounds = true
-    }
-}
