@@ -192,19 +192,16 @@ open class CollageView: UIView {
                     cell.layer.addSublayer(cell.drawRoundedBorder(width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 10, sides: 8, type: .hexa))
                 }
             } else {
-                let polyWidth = cell.frame.width
+                let polyWidth = cell.frame.height
                 let polyHeight = cell.frame.height
-                cell.layer.masksToBounds = false
-                cell.layer.shouldRasterize = true
-                cell.isOpaque = true
                 if shapeMask {
                     cell.layer.mask = cell.drawRoundedHex(width: polyWidth, height: polyHeight, cornerRadius: 02, sides: 6,shapeMask : shapeMask, type: .hexa)
                 } else {
                     cell.layer.addSublayer(cell.drawRoundedHex(width: polyWidth, height: polyHeight, cornerRadius: 02, sides: 6,shapeMask : shapeMask, type: .hexa))
                 }
-                cell.layer.masksToBounds = false
-                cell.layer.shouldRasterize = true
-                cell.isOpaque = true
+//                cell.layer.masksToBounds = false
+//                cell.layer.shouldRasterize = true
+//                cell.isOpaque = true
                 cell.layer.addSublayer(cell.drawRoundedBorder(width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 10, sides: 6, type: .hexa))
 
             }

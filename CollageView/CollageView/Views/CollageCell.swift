@@ -124,7 +124,7 @@ class CollageCell: UIView {
    
     func drawRoundedBorder(width:CGFloat,height:CGFloat, cornerRadius:Float = 0, lineWidth:CGFloat, sides:Int = 6, type: ShapeType)->CAShapeLayer{
         let borderLayer = CAShapeLayer()
-        var crect = CGRect(x: 0, y: 0, width: width, height: height - ((height * 30)/233))
+        var crect = CGRect(x: 0, y: 0, width: width, height: height)
         if type == .heart {
             crect = CGRect(x: 0, y: 0, width: width, height: height)
         }
@@ -144,7 +144,7 @@ class CollageCell: UIView {
         }
         borderLayer.path = path.cgPath
         borderLayer.lineWidth = lineWidth
-        borderLayer.strokeColor = UIColor.white.cgColor
+        borderLayer.strokeColor = UIColor.black.cgColor
         borderLayer.fillColor = UIColor.clear.cgColor
         borderLayer.borderWidth = 0
         return borderLayer
@@ -152,7 +152,7 @@ class CollageCell: UIView {
 
     func drawRoundedHex(width:CGFloat,height:CGFloat, cornerRadius:Float = 0, sides:Int = 6, shapeMask: Bool = true, type: ShapeType)->CAShapeLayer{
         let shapeLayer = CAShapeLayer()
-        var crect = CGRect(x: 0, y: 0, width: width, height: height - ((height * 30)/233))
+        var crect = CGRect(x: 0, y: 0, width: width, height: height)
         if type == .heart {
             crect = CGRect(x: 0, y: 0, width: width, height: height)
         } else if type == .star {

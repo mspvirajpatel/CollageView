@@ -45,7 +45,7 @@ class PickerViewController: UIViewController {
     
     let cachingImageManager = PHCachingImageManager()
     
-    fileprivate var collageItems : [CollageViewType] = [.t406,.t304,.t404,.t101,.t201,.t202,.t301,.t302,.t303,.t401,.t402,.t403,.t801,.t802,.t501,.t502,.t601,.t602]
+    fileprivate var collageItems : [CollageViewType] = [.t405,.t101,.t201,.t202,.t301,.t302,.t303,.t304,.t401,.t402,.t403,.t404,.t406,.t501,.t502,.t601,.t602,.t801,.t802]
     fileprivate var assets = [PHAsset]()
     fileprivate var selectedItemSet = Set<CLOCellItem>()
     fileprivate var selectedItemArray = [CLOCellItem]()
@@ -340,24 +340,22 @@ extension PickerViewController : SwipeViewDataSource {
         NSLayoutConstraint.activate([xConst,yConst,wConst,hConst])
         
         collage.isUserInteractionEnabled = false
-        collage.updateMargin(val: 3.0)
-        collage.updatePadding(val: 1.5)
         collage.layoutIfNeeded()
         collage.layoutSubviews()
         collage.setPhotos(photos: self.selectedImageArray)
-        
-        if collageItems[index] == .t602 {
-            cornerRedius(views: collage.collageCells)
-        } else if collageItems[index] == .t404 {
-            collage.setViewHaxa(isRoundedHex: true)
-        } else if collageItems[index] == .t405 {
-            collage.setViewHaxa()
-        } else if collageItems[index] == .t304 {
-            collage.setHeartView()
-        } else if collageItems[index] == .t406 {
-            collage.setTransferentView()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if self.collageItems[index] == .t602 {
+                cornerRedius(views: collage.collageCells)
+            } else if self.collageItems[index] == .t404 {
+                collage.setViewHaxa(isRoundedHex: true)
+            } else if self.collageItems[index] == .t405 {
+                collage.setViewHaxa()
+            } else if self.collageItems[index] == .t304 {
+                collage.setHeartView()
+            } else if self.collageItems[index] == .t406 {
+                collage.setTransferentView()
+            }
         }
-        
         return view
     }
 }

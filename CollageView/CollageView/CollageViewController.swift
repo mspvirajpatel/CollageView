@@ -120,26 +120,29 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         _ = self.collageView
-        collageView.updateMargin(val: 3.0)
-        collageView.updatePadding(val: 1.5)
+
         collageView.layoutSubviews()
         collageView.layoutIfNeeded()
         collageView.collageType = collageType
-        if let imgs = self.photoImages {
-            self.collageView.setPhotos(photos: imgs)
-            if collageType == .t404 {
-                self.collageView.setViewHaxa(isRoundedHex: true)
-            } else if collageType == .t405 {
-                self.collageView.setViewHaxa()
-            } else if self.collageType == .t602 {
-                cornerRedius(views: collageView.collageCells)
-            } else if self.collageType == .t304 {
-                self.collageView.setHeartView()
-            } else if self.collageType == .t406 {
-                self.collageView.setTransferentView(isLargeSize: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if let imgs = self.photoImages {
+                self.collageView.setPhotos(photos: imgs)
+                if self.collageType == .t404 {
+                    self.collageView.setViewHaxa(isRoundedHex: true)
+                } else if self.collageType == .t405 {
+                    self.collageView.setViewHaxa()
+                } else if self.collageType == .t602 {
+                    cornerRedius(views: self.collageView.collageCells)
+                } else if self.collageType == .t304 {
+                    self.collageView.setHeartView()
+                } else if self.collageType == .t406 {
+                    self.collageView.setTransferentView(isLargeSize: true)
+                }
+                print("final Rect: \(self.collageView.frame)")
             }
-            print("final Rect: \(self.collageView.frame)")
         }
+        
         collageView.delegate = self
         let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress(_:)))
         lpgr.minimumPressDuration = 0.1 //seconds
