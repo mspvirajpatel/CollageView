@@ -52,6 +52,13 @@ enum CollageViewType : Int {
     case t405
     case t304
     case t406
+    case t503
+    case t504
+    case t305
+    case t306
+    case t407
+    case t505
+    case t307
     var getInstance : CollageView {
         switch self {
         case .t101 : return CollageViewT101()
@@ -73,6 +80,13 @@ enum CollageViewType : Int {
         case .t405 : return CollageViewT405()
         case .t304 : return CollageViewT304()
         case .t406 : return CollageViewT406()
+        case .t503 : return CollageViewT503()
+        case .t504 : return CollageViewT504()
+        case .t305 : return CollageViewT305()
+        case .t306 : return CollageViewT306()
+        case .t407 : return CollageViewT407()
+        case .t505 : return CollageViewT505()
+        case .t307 : return CollageViewT307()
         default: return CollageViewT402()
         }
     }

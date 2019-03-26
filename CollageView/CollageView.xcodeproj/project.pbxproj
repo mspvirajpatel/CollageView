@@ -42,6 +42,13 @@
 		824413D4223684E800AF97EB /* CollageViewT405.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824413D3223684E800AF97EB /* CollageViewT405.swift */; };
 		826AF37022378426008CF561 /* CollageViewT304.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826AF36F22378426008CF561 /* CollageViewT304.swift */; };
 		826AF3722237D8C3008CF561 /* CollageViewT406.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826AF3712237D8C3008CF561 /* CollageViewT406.swift */; };
+		828F1EA4224A07E9009F52A9 /* CollageViewT504.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F1EA3224A07E9009F52A9 /* CollageViewT504.swift */; };
+		828F1EA6224A1AFB009F52A9 /* CollageViewT305.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F1EA5224A1AFB009F52A9 /* CollageViewT305.swift */; };
+		828F1EA8224A1C66009F52A9 /* CollageViewT306.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F1EA7224A1C66009F52A9 /* CollageViewT306.swift */; };
+		828F1EAA224A1D69009F52A9 /* CollageViewT407.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F1EA9224A1D69009F52A9 /* CollageViewT407.swift */; };
+		828F1EAC224A1E99009F52A9 /* CollageViewT505.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F1EAB224A1E99009F52A9 /* CollageViewT505.swift */; };
+		828F1EAE224A27CE009F52A9 /* CollageViewT307.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F1EAD224A27CE009F52A9 /* CollageViewT307.swift */; };
+		82A7B75A2249F82F0021E050 /* CollageViewT503.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7B7592249F82F0021E050 /* CollageViewT503.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +91,13 @@
 		824413D3223684E800AF97EB /* CollageViewT405.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT405.swift; sourceTree = "<group>"; };
 		826AF36F22378426008CF561 /* CollageViewT304.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT304.swift; sourceTree = "<group>"; };
 		826AF3712237D8C3008CF561 /* CollageViewT406.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT406.swift; sourceTree = "<group>"; };
+		828F1EA3224A07E9009F52A9 /* CollageViewT504.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT504.swift; sourceTree = "<group>"; };
+		828F1EA5224A1AFB009F52A9 /* CollageViewT305.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT305.swift; sourceTree = "<group>"; };
+		828F1EA7224A1C66009F52A9 /* CollageViewT306.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT306.swift; sourceTree = "<group>"; };
+		828F1EA9224A1D69009F52A9 /* CollageViewT407.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT407.swift; sourceTree = "<group>"; };
+		828F1EAB224A1E99009F52A9 /* CollageViewT505.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT505.swift; sourceTree = "<group>"; };
+		828F1EAD224A27CE009F52A9 /* CollageViewT307.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT307.swift; sourceTree = "<group>"; };
+		82A7B7592249F82F0021E050 /* CollageViewT503.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT503.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,16 +172,23 @@
 				824413BB223639F300AF97EB /* CollageViewT302.swift */,
 				824413BD223639FF00AF97EB /* CollageViewT303.swift */,
 				826AF36F22378426008CF561 /* CollageViewT304.swift */,
+				828F1EA5224A1AFB009F52A9 /* CollageViewT305.swift */,
+				828F1EA7224A1C66009F52A9 /* CollageViewT306.swift */,
+				828F1EAD224A27CE009F52A9 /* CollageViewT307.swift */,
 				824413BF22363A0800AF97EB /* CollageViewT401.swift */,
 				824413C122363A1200AF97EB /* CollageViewT402.swift */,
 				824413C322363A1A00AF97EB /* CollageViewT403.swift */,
 				824413D12236533900AF97EB /* CollageViewT404.swift */,
 				824413D3223684E800AF97EB /* CollageViewT405.swift */,
 				826AF3712237D8C3008CF561 /* CollageViewT406.swift */,
+				828F1EA9224A1D69009F52A9 /* CollageViewT407.swift */,
 				824413C522363A2E00AF97EB /* CollageViewT801.swift */,
 				824413C722363A3800AF97EB /* CollageViewT802.swift */,
 				824413C922363A4000AF97EB /* CollageViewT501.swift */,
 				824413CB22363A4900AF97EB /* CollageViewT502.swift */,
+				82A7B7592249F82F0021E050 /* CollageViewT503.swift */,
+				828F1EA3224A07E9009F52A9 /* CollageViewT504.swift */,
+				828F1EAB224A1E99009F52A9 /* CollageViewT505.swift */,
 				824413CD22363A5100AF97EB /* CollageViewT601.swift */,
 				824413CF22363A5900AF97EB /* CollageViewT602.swift */,
 			);
@@ -251,11 +272,15 @@
 				824413BA223639E900AF97EB /* CollageViewT301.swift in Sources */,
 				824413982236372B00AF97EB /* CollageViewController.swift in Sources */,
 				824413AE2236392A00AF97EB /* BaseLineView.swift in Sources */,
+				828F1EA6224A1AFB009F52A9 /* CollageViewT305.swift in Sources */,
 				824413A2223637A200AF97EB /* SwipeView.m in Sources */,
 				824413962236370700AF97EB /* PickerViewController.swift in Sources */,
 				824413B22236397200AF97EB /* CollageView.swift in Sources */,
 				824413C622363A2E00AF97EB /* CollageViewT801.swift in Sources */,
+				828F1EA4224A07E9009F52A9 /* CollageViewT504.swift in Sources */,
 				824413BC223639F300AF97EB /* CollageViewT302.swift in Sources */,
+				828F1EAC224A1E99009F52A9 /* CollageViewT505.swift in Sources */,
+				828F1EAA224A1D69009F52A9 /* CollageViewT407.swift in Sources */,
 				824413CE22363A5100AF97EB /* CollageViewT601.swift in Sources */,
 				824413C822363A3800AF97EB /* CollageViewT802.swift in Sources */,
 				824413AA2236388500AF97EB /* LineHandleView.swift in Sources */,
@@ -269,11 +294,14 @@
 				8244139A2236374000AF97EB /* ImageCollectionCell.swift in Sources */,
 				824413A62236382800AF97EB /* PickerViewCell.swift in Sources */,
 				824413B6223639BA00AF97EB /* CollageViewT201.swift in Sources */,
+				828F1EAE224A27CE009F52A9 /* CollageViewT307.swift in Sources */,
+				82A7B75A2249F82F0021E050 /* CollageViewT503.swift in Sources */,
 				824413B4223639B200AF97EB /* CollageViewT101.swift in Sources */,
 				824413A82236386100AF97EB /* PhotoScrollView.swift in Sources */,
 				8244139E2236376100AF97EB /* CollageTransition.swift in Sources */,
 				82441384223636E000AF97EB /* AppDelegate.swift in Sources */,
 				824413BE223639FF00AF97EB /* CollageViewT303.swift in Sources */,
+				828F1EA8224A1C66009F52A9 /* CollageViewT306.swift in Sources */,
 				8244139C2236374F00AF97EB /* Utils.swift in Sources */,
 				824413D4223684E800AF97EB /* CollageViewT405.swift in Sources */,
 				824413AC223638B800AF97EB /* CollageCell.swift in Sources */,
