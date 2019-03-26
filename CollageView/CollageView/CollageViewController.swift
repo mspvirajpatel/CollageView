@@ -138,6 +138,8 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
                     self.collageView.setHeartView()
                 } else if self.collageType == .t406 {
                     self.collageView.setTransferentView(isLargeSize: true)
+                } else if self.collageType == .t506 {
+                    cornerRedius(views: [self.collageView.collageCells[4]])
                 }
                 print("final Rect: \(self.collageView.frame)")
             }

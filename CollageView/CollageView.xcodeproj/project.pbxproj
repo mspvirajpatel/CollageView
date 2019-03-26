@@ -49,6 +49,7 @@
 		828F1EAC224A1E99009F52A9 /* CollageViewT505.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F1EAB224A1E99009F52A9 /* CollageViewT505.swift */; };
 		828F1EAE224A27CE009F52A9 /* CollageViewT307.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F1EAD224A27CE009F52A9 /* CollageViewT307.swift */; };
 		828F1EB0224A40C9009F52A9 /* CollageViewT408.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F1EAF224A40C9009F52A9 /* CollageViewT408.swift */; };
+		828F1EB2224A50B7009F52A9 /* CollageViewT506.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F1EB1224A50B7009F52A9 /* CollageViewT506.swift */; };
 		82A7B75A2249F82F0021E050 /* CollageViewT503.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7B7592249F82F0021E050 /* CollageViewT503.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		828F1EAB224A1E99009F52A9 /* CollageViewT505.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT505.swift; sourceTree = "<group>"; };
 		828F1EAD224A27CE009F52A9 /* CollageViewT307.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT307.swift; sourceTree = "<group>"; };
 		828F1EAF224A40C9009F52A9 /* CollageViewT408.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT408.swift; sourceTree = "<group>"; };
+		828F1EB1224A50B7009F52A9 /* CollageViewT506.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT506.swift; sourceTree = "<group>"; };
 		82A7B7592249F82F0021E050 /* CollageViewT503.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT503.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +194,7 @@
 				82A7B7592249F82F0021E050 /* CollageViewT503.swift */,
 				828F1EA3224A07E9009F52A9 /* CollageViewT504.swift */,
 				828F1EAB224A1E99009F52A9 /* CollageViewT505.swift */,
+				828F1EB1224A50B7009F52A9 /* CollageViewT506.swift */,
 				824413CD22363A5100AF97EB /* CollageViewT601.swift */,
 				824413CF22363A5900AF97EB /* CollageViewT602.swift */,
 			);
@@ -288,6 +291,7 @@
 				824413CE22363A5100AF97EB /* CollageViewT601.swift in Sources */,
 				824413C822363A3800AF97EB /* CollageViewT802.swift in Sources */,
 				824413AA2236388500AF97EB /* LineHandleView.swift in Sources */,
+				828F1EB2224A50B7009F52A9 /* CollageViewT506.swift in Sources */,
 				824413D22236533900AF97EB /* CollageViewT404.swift in Sources */,
 				824413C022363A0800AF97EB /* CollageViewT401.swift in Sources */,
 				824413CC22363A4900AF97EB /* CollageViewT502.swift in Sources */,
