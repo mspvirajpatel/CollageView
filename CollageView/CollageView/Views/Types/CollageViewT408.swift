@@ -82,10 +82,10 @@ class CollageViewT408: CollageView {
         let lc12 = NSLayoutConstraint(item: cell03, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([ lc09, lc10, lc11, lc12])
         
-        self.marginLeftTopContraints += [lc01,lc02,lc05,lc09]
-        self.marginRightBottomContraints += [lc03,lc07,lc11,lc12]
-        self.paddingLeftTopContraints += [lc06,lc10]
-        self.paddingRightBottomContraints += [lc04,lc08]
+        self.marginLeftTopContraints += [lc01,lc02,lc05,lc09,lc011]
+        self.marginRightBottomContraints += [lc03,lc07,lc11,lc12,lc031]
+        self.paddingLeftTopContraints += [lc06,lc10,lc021]
+        self.paddingRightBottomContraints += [lc04,lc08,lc041]
         self.collageCells += [cell01,cell04,cell02,cell03]
         
     }

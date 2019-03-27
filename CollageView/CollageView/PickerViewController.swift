@@ -45,7 +45,7 @@ class PickerViewController: UIViewController {
     
     let cachingImageManager = PHCachingImageManager()
     
-    fileprivate var collageItems : [CollageViewType] = [.t506,.t408,.t307,.t505,.t407,.t306,.t305,.t504,.t503,.t405,.t101,.t201,.t202,.t301,.t302,.t303,.t304,.t401,.t402,.t403,.t404,.t406,.t501,.t502,.t601,.t602,.t801,.t802]
+    fileprivate var collageItems : [CollageViewType] = [.t313,.t312,.t311,.t310,.t309,.t308,.t209,.t208,.t207,.t206,.t205,.t204,.t203,.t506,.t408,.t307,.t505,.t407,.t306,.t305,.t504,.t503,.t405,.t101,.t201,.t202,.t301,.t302,.t303,.t304,.t401,.t402,.t403,.t404,.t406,.t501,.t502,.t601,.t602,.t801,.t802]
     fileprivate var assets = [PHAsset]()
     fileprivate var selectedItemSet = Set<CLOCellItem>()
     fileprivate var selectedItemArray = [CLOCellItem]()
@@ -356,9 +356,14 @@ extension PickerViewController : SwipeViewDataSource {
                 collage.setTransferentView()
             } else if self.collageItems[index] == .t506 {
                 cornerRedius(views: [collage.collageCells[4]])
-            }
+            } else if self.collageItems[index] == .t206 {
+                collage.setMiddelHeartView()
+            } else if self.collageItems[index] == .t309 {
+                cornerRedius(views: [collage.collageCells[2]])
+            } else if self.collageItems[index] == .t313 {
+                collage.setHaxa(cell: collage.collageCells[2])
+            } 
         }
         return view
     }
 }
-

@@ -42,6 +42,19 @@
 		824413D4223684E800AF97EB /* CollageViewT405.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824413D3223684E800AF97EB /* CollageViewT405.swift */; };
 		826AF37022378426008CF561 /* CollageViewT304.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826AF36F22378426008CF561 /* CollageViewT304.swift */; };
 		826AF3722237D8C3008CF561 /* CollageViewT406.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826AF3712237D8C3008CF561 /* CollageViewT406.swift */; };
+		827702DD224B577600F511B7 /* CollageViewT203.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827702DC224B577600F511B7 /* CollageViewT203.swift */; };
+		827702DF224B582200F511B7 /* CollageViewT204.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827702DE224B582200F511B7 /* CollageViewT204.swift */; };
+		827702E1224B5BCA00F511B7 /* CollageViewT205.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827702E0224B5BCA00F511B7 /* CollageViewT205.swift */; };
+		827702E3224B7A4800F511B7 /* CollageViewT206.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827702E2224B7A4800F511B7 /* CollageViewT206.swift */; };
+		827702E5224B7B5200F511B7 /* CollageViewT207.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827702E4224B7B5200F511B7 /* CollageViewT207.swift */; };
+		827702E7224B7CA600F511B7 /* CollageViewT208.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827702E6224B7CA600F511B7 /* CollageViewT208.swift */; };
+		827702E9224B7CAF00F511B7 /* CollageViewT209.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827702E8224B7CAF00F511B7 /* CollageViewT209.swift */; };
+		827702EB224B7D6C00F511B7 /* CollageViewT308.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827702EA224B7D6C00F511B7 /* CollageViewT308.swift */; };
+		827702ED224B7E7700F511B7 /* CollageViewT309.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827702EC224B7E7700F511B7 /* CollageViewT309.swift */; };
+		827702EF224B7F3400F511B7 /* CollageViewT310.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827702EE224B7F3400F511B7 /* CollageViewT310.swift */; };
+		827702F1224B80A500F511B7 /* CollageViewT311.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827702F0224B80A500F511B7 /* CollageViewT311.swift */; };
+		827702F3224B81A900F511B7 /* CollageViewT312.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827702F2224B81A900F511B7 /* CollageViewT312.swift */; };
+		827702F5224B842500F511B7 /* CollageViewT313.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827702F4224B842500F511B7 /* CollageViewT313.swift */; };
 		828F1EA4224A07E9009F52A9 /* CollageViewT504.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F1EA3224A07E9009F52A9 /* CollageViewT504.swift */; };
 		828F1EA6224A1AFB009F52A9 /* CollageViewT305.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F1EA5224A1AFB009F52A9 /* CollageViewT305.swift */; };
 		828F1EA8224A1C66009F52A9 /* CollageViewT306.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F1EA7224A1C66009F52A9 /* CollageViewT306.swift */; };
@@ -93,6 +106,19 @@
 		824413D3223684E800AF97EB /* CollageViewT405.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT405.swift; sourceTree = "<group>"; };
 		826AF36F22378426008CF561 /* CollageViewT304.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT304.swift; sourceTree = "<group>"; };
 		826AF3712237D8C3008CF561 /* CollageViewT406.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT406.swift; sourceTree = "<group>"; };
+		827702DC224B577600F511B7 /* CollageViewT203.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT203.swift; sourceTree = "<group>"; };
+		827702DE224B582200F511B7 /* CollageViewT204.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT204.swift; sourceTree = "<group>"; };
+		827702E0224B5BCA00F511B7 /* CollageViewT205.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT205.swift; sourceTree = "<group>"; };
+		827702E2224B7A4800F511B7 /* CollageViewT206.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT206.swift; sourceTree = "<group>"; };
+		827702E4224B7B5200F511B7 /* CollageViewT207.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT207.swift; sourceTree = "<group>"; };
+		827702E6224B7CA600F511B7 /* CollageViewT208.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT208.swift; sourceTree = "<group>"; };
+		827702E8224B7CAF00F511B7 /* CollageViewT209.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT209.swift; sourceTree = "<group>"; };
+		827702EA224B7D6C00F511B7 /* CollageViewT308.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT308.swift; sourceTree = "<group>"; };
+		827702EC224B7E7700F511B7 /* CollageViewT309.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT309.swift; sourceTree = "<group>"; };
+		827702EE224B7F3400F511B7 /* CollageViewT310.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT310.swift; sourceTree = "<group>"; };
+		827702F0224B80A500F511B7 /* CollageViewT311.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT311.swift; sourceTree = "<group>"; };
+		827702F2224B81A900F511B7 /* CollageViewT312.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT312.swift; sourceTree = "<group>"; };
+		827702F4224B842500F511B7 /* CollageViewT313.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT313.swift; sourceTree = "<group>"; };
 		828F1EA3224A07E9009F52A9 /* CollageViewT504.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT504.swift; sourceTree = "<group>"; };
 		828F1EA5224A1AFB009F52A9 /* CollageViewT305.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT305.swift; sourceTree = "<group>"; };
 		828F1EA7224A1C66009F52A9 /* CollageViewT306.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageViewT306.swift; sourceTree = "<group>"; };
@@ -172,6 +198,13 @@
 				824413B3223639B200AF97EB /* CollageViewT101.swift */,
 				824413B5223639BA00AF97EB /* CollageViewT201.swift */,
 				824413B7223639D500AF97EB /* CollageViewT202.swift */,
+				827702DC224B577600F511B7 /* CollageViewT203.swift */,
+				827702DE224B582200F511B7 /* CollageViewT204.swift */,
+				827702E0224B5BCA00F511B7 /* CollageViewT205.swift */,
+				827702E2224B7A4800F511B7 /* CollageViewT206.swift */,
+				827702E4224B7B5200F511B7 /* CollageViewT207.swift */,
+				827702E6224B7CA600F511B7 /* CollageViewT208.swift */,
+				827702E8224B7CAF00F511B7 /* CollageViewT209.swift */,
 				824413B9223639E900AF97EB /* CollageViewT301.swift */,
 				824413BB223639F300AF97EB /* CollageViewT302.swift */,
 				824413BD223639FF00AF97EB /* CollageViewT303.swift */,
@@ -179,6 +212,12 @@
 				828F1EA5224A1AFB009F52A9 /* CollageViewT305.swift */,
 				828F1EA7224A1C66009F52A9 /* CollageViewT306.swift */,
 				828F1EAD224A27CE009F52A9 /* CollageViewT307.swift */,
+				827702EA224B7D6C00F511B7 /* CollageViewT308.swift */,
+				827702EC224B7E7700F511B7 /* CollageViewT309.swift */,
+				827702EE224B7F3400F511B7 /* CollageViewT310.swift */,
+				827702F0224B80A500F511B7 /* CollageViewT311.swift */,
+				827702F2224B81A900F511B7 /* CollageViewT312.swift */,
+				827702F4224B842500F511B7 /* CollageViewT313.swift */,
 				824413BF22363A0800AF97EB /* CollageViewT401.swift */,
 				824413C122363A1200AF97EB /* CollageViewT402.swift */,
 				824413C322363A1A00AF97EB /* CollageViewT403.swift */,
@@ -274,17 +313,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				824413C222363A1200AF97EB /* CollageViewT402.swift in Sources */,
+				827702E9224B7CAF00F511B7 /* CollageViewT209.swift in Sources */,
+				827702E1224B5BCA00F511B7 /* CollageViewT205.swift in Sources */,
+				827702DD224B577600F511B7 /* CollageViewT203.swift in Sources */,
 				824413D022363A5900AF97EB /* CollageViewT602.swift in Sources */,
 				824413BA223639E900AF97EB /* CollageViewT301.swift in Sources */,
 				824413982236372B00AF97EB /* CollageViewController.swift in Sources */,
 				824413AE2236392A00AF97EB /* BaseLineView.swift in Sources */,
 				828F1EA6224A1AFB009F52A9 /* CollageViewT305.swift in Sources */,
+				827702E3224B7A4800F511B7 /* CollageViewT206.swift in Sources */,
 				824413A2223637A200AF97EB /* SwipeView.m in Sources */,
 				824413962236370700AF97EB /* PickerViewController.swift in Sources */,
 				824413B22236397200AF97EB /* CollageView.swift in Sources */,
 				824413C622363A2E00AF97EB /* CollageViewT801.swift in Sources */,
 				828F1EB0224A40C9009F52A9 /* CollageViewT408.swift in Sources */,
 				828F1EA4224A07E9009F52A9 /* CollageViewT504.swift in Sources */,
+				827702F3224B81A900F511B7 /* CollageViewT312.swift in Sources */,
 				824413BC223639F300AF97EB /* CollageViewT302.swift in Sources */,
 				828F1EAC224A1E99009F52A9 /* CollageViewT505.swift in Sources */,
 				828F1EAA224A1D69009F52A9 /* CollageViewT407.swift in Sources */,
@@ -296,16 +340,23 @@
 				824413C022363A0800AF97EB /* CollageViewT401.swift in Sources */,
 				824413CC22363A4900AF97EB /* CollageViewT502.swift in Sources */,
 				826AF3722237D8C3008CF561 /* CollageViewT406.swift in Sources */,
+				827702F1224B80A500F511B7 /* CollageViewT311.swift in Sources */,
 				824413C422363A1A00AF97EB /* CollageViewT403.swift in Sources */,
+				827702ED224B7E7700F511B7 /* CollageViewT309.swift in Sources */,
 				824413CA22363A4000AF97EB /* CollageViewT501.swift in Sources */,
 				826AF37022378426008CF561 /* CollageViewT304.swift in Sources */,
 				8244139A2236374000AF97EB /* ImageCollectionCell.swift in Sources */,
+				827702EF224B7F3400F511B7 /* CollageViewT310.swift in Sources */,
 				824413A62236382800AF97EB /* PickerViewCell.swift in Sources */,
+				827702DF224B582200F511B7 /* CollageViewT204.swift in Sources */,
+				827702F5224B842500F511B7 /* CollageViewT313.swift in Sources */,
 				824413B6223639BA00AF97EB /* CollageViewT201.swift in Sources */,
 				828F1EAE224A27CE009F52A9 /* CollageViewT307.swift in Sources */,
 				82A7B75A2249F82F0021E050 /* CollageViewT503.swift in Sources */,
 				824413B4223639B200AF97EB /* CollageViewT101.swift in Sources */,
+				827702E7224B7CA600F511B7 /* CollageViewT208.swift in Sources */,
 				824413A82236386100AF97EB /* PhotoScrollView.swift in Sources */,
+				827702EB224B7D6C00F511B7 /* CollageViewT308.swift in Sources */,
 				8244139E2236376100AF97EB /* CollageTransition.swift in Sources */,
 				82441384223636E000AF97EB /* AppDelegate.swift in Sources */,
 				824413BE223639FF00AF97EB /* CollageViewT303.swift in Sources */,
@@ -314,6 +365,7 @@
 				824413D4223684E800AF97EB /* CollageViewT405.swift in Sources */,
 				824413AC223638B800AF97EB /* CollageCell.swift in Sources */,
 				824413B8223639D500AF97EB /* CollageViewT202.swift in Sources */,
+				827702E5224B7B5200F511B7 /* CollageViewT207.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

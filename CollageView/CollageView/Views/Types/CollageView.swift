@@ -61,6 +61,19 @@ enum CollageViewType : Int {
     case t307
     case t408
     case t506
+    case t203
+    case t204
+    case t205
+    case t206
+    case t207
+    case t208
+    case t209
+    case t308
+    case t309
+    case t310
+    case t311
+    case t312
+    case t313
     var getInstance : CollageView {
         switch self {
         case .t101 : return CollageViewT101()
@@ -91,6 +104,19 @@ enum CollageViewType : Int {
         case .t307 : return CollageViewT307()
         case .t408 : return CollageViewT408()
         case .t506 : return CollageViewT506()
+        case .t203 : return CollageViewT203()
+        case .t204 : return CollageViewT204()
+        case .t205 : return CollageViewT205()
+        case .t206 : return CollageViewT206()
+        case .t207 : return CollageViewT207()
+        case .t208 : return CollageViewT208()
+        case .t209 : return CollageViewT209()
+        case .t308 : return CollageViewT308()
+        case .t309 : return CollageViewT309()
+        case .t310 : return CollageViewT310()
+        case .t311 : return CollageViewT311()
+        case .t312 : return CollageViewT312()
+        case .t313 : return CollageViewT313()
         default: return CollageViewT402()
         }
     }
@@ -197,17 +223,7 @@ open class CollageView: UIView {
         for cell in collageCells {
             if isRoundedHex! {
                 if cell.id != 4 {
-                    let polyWidth = cell.frame.width
-                    let polyHeight = cell.frame.height
-                    if shapeMask {
-                        cell.layer.mask  = cell.drawRoundedHex(width: polyWidth, height: polyHeight, cornerRadius: 02, sides: 8,shapeMask : shapeMask,type: .hexa)
-                    } else {
-                        cell.layer.addSublayer(cell.drawRoundedHex(width: polyWidth, height: polyHeight, cornerRadius: 02, sides: 8,shapeMask : shapeMask,type: .hexa))
-                    }
-                    cell.layer.masksToBounds = false
-                    cell.layer.shouldRasterize = true
-                    cell.isOpaque = true
-                    cell.layer.addSublayer(cell.drawRoundedBorder(width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 10, sides: 8, type: .hexa))
+                    setHaxa(cell: cell, shapeMask: shapeMask)
                 }
             } else {
                 let polyWidth = cell.frame.height
@@ -226,9 +242,37 @@ open class CollageView: UIView {
         }
     }
     
+    func setHaxa(cell: CollageCell, shapeMask: Bool = true) {
+        let polyWidth = cell.frame.width
+        let polyHeight = cell.frame.height
+        if shapeMask {
+            cell.layer.mask  = cell.drawRoundedHex(width: polyWidth, height: polyHeight, cornerRadius: 02, sides: 8,shapeMask : shapeMask,type: .hexa)
+        } else {
+            cell.layer.addSublayer(cell.drawRoundedHex(width: polyWidth, height: polyHeight, cornerRadius: 02, sides: 8,shapeMask : shapeMask,type: .hexa))
+        }
+        cell.layer.masksToBounds = false
+        cell.layer.shouldRasterize = true
+        cell.isOpaque = true
+        cell.layer.addSublayer(cell.drawRoundedBorder(width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 10, sides: 8, type: .hexa))
+    }
+    
     func setHeartView() {
         for cell in collageCells {
             if cell.id == 3 {
+                let polyWidth = cell.frame.width
+                let polyHeight = cell.frame.height
+                cell.layer.mask = cell.drawRoundedHex(width: polyWidth, height: polyHeight, cornerRadius: 02, sides:  6, type: .heart)
+                cell.layer.masksToBounds = false
+                cell.layer.shouldRasterize = true
+                cell.isOpaque = true
+                cell.layer.addSublayer(cell.drawRoundedBorder(width: polyWidth, height: polyHeight, cornerRadius: 02, lineWidth: 4, sides: 6,type: .heart))
+            }
+        }
+    }
+    
+    func setMiddelHeartView() {
+        for cell in collageCells {
+            if cell.id == 2 {
                 let polyWidth = cell.frame.width
                 let polyHeight = cell.frame.height
                 cell.layer.mask = cell.drawRoundedHex(width: polyWidth, height: polyHeight, cornerRadius: 02, sides:  6, type: .heart)

@@ -64,8 +64,6 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var selectedPhotoCV: UICollectionView!
     
-    //    @IBOutlet weak var collageView: CollageView!
-    
     var collageRatio : CGFloat = 1.0
     var collageType : CollageViewType = .t301
     var photoImages : [UIImage]?
@@ -97,7 +95,6 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBAction func backBtnPressed(_ sender: Any) {
         self.dismiss(animated: true) {
-            
         }
     }
     
@@ -140,7 +137,14 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
                     self.collageView.setTransferentView(isLargeSize: true)
                 } else if self.collageType == .t506 {
                     cornerRedius(views: [self.collageView.collageCells[4]])
-                }
+                } else if self.collageType == .t205 {
+                    //                generateDiagonal(view: collage.collageCells[0])
+                    //                generateDiagonal2(view: collage.collageCells[1])
+                } else if self.collageType == .t206 {
+                    self.collageView.setMiddelHeartView()
+                } else if self.collageType == .t309 {
+                    cornerRedius(views: [self.collageView.collageCells[2]])
+                } 
                 print("final Rect: \(self.collageView.frame)")
             }
         }
@@ -200,14 +204,7 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
                     
                     let doubleTap = UITapGestureRecognizer(target: self, action: #selector(detectDoubleTap(_:)))
                     doubleTap.numberOfTapsRequired = 2
-                    
                     cell01.addGestureRecognizer(doubleTap)
-                    
-                    
-                    //                    let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress1(_:)))
-                    //                    lpgr.minimumPressDuration = 0.8 //seconds
-                    //                    lpgr.delegate = self
-                    //                    cell01.addGestureRecognizer(lpgr)
                     
                     let pan = UIPanGestureRecognizer(target: self, action: #selector(self.moveImage(inCollage:)))
                     pan.delegate = self
@@ -317,20 +314,6 @@ extension CollageViewController: CollageCellDelegate {
                 }
             }
         }
-        
-        //        if let view = gesture.view as? CollageCell {
-        //            print(view.id)
-        //            for allView in collageView.subviews {
-        //                if let cell = allView as? CollageCell {
-        //                    if cell.id == view.id {
-        //                        containerView.bringSubview(toFront: cell)
-        //                    } else {
-        ////                        containerView.sendSubview(toBack: cell)
-        //                    }
-        //                }
-        //            }
-        //
-        //        }
     }
     
     @objc func detectDoubleTap(_ gesture : UITapGestureRecognizer) {
@@ -385,17 +368,10 @@ extension CollageViewController: CollageCellDelegate {
                         let frameRelativeToParent = cell.convert(cell.bounds, to: collageView)
                         if cell.id == view.id {
                             if frameRelativeToParent.contains(locationPointInView ?? .zero) {
-                                //                            cell.isUserInteractionEnabled = false
-                                movieingCell1 = cell //(UIImageView*)i;
+                                movieingCell1 = cell
                                 collageView.bringSubviewToFront(movieingCell1!)
                             }
-                        } else {
-                            //                        containerView.sendSubview(toBack: cell)
                         }
-                        
-                        //                        if cell.id == view.id {
-                        //
-                        //                        }
                     }
                 }
             }
@@ -418,11 +394,7 @@ extension CollageViewController: CollageCellDelegate {
                         let frameRelativeToParent = cell.convert(cell.bounds, to: collageView)
                         if frameRelativeToParent.contains(locationPointInView ?? .zero) {
                             cell.isUserInteractionEnabled = true
-                            
                         }
-                        //                        if cell.id == view.id {
-                        //
-                        //                        }
                     }
                 }
             }
@@ -443,4 +415,50 @@ extension CGFloat {
         let b = CGFloat(Double.pi) * (self/180)
         return b
     }
+}
+
+func generateDiagonal(view: UIView?) {
+    let maskLayer : CAShapeLayer = CAShapeLayer()
+    maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
+    maskLayer.frame = (view?.bounds)!
+    
+    UIGraphicsBeginImageContext((view?.bounds.size)!);
+    let path = UIBezierPath()
+    
+    path.move(to: CGPoint.init(x: 0, y: 0))
+    path.addLine(to: CGPoint.init(x: (view?.bounds.size.width)!, y: 0))
+    
+    path.addLine(to: CGPoint.init(x: ((view?.bounds.size.width)! / 1.5), y: (view?.bounds.size.height)!))
+    
+    path.addLine(to: CGPoint.init(x: 0, y: (view?.bounds.size.height)!))
+    
+    path.close()
+    path.fill()
+    
+    maskLayer.path = path.cgPath;
+    UIGraphicsEndImageContext();
+    view!.layer.mask = maskLayer;
+}
+
+func generateDiagonal2(view: UIView?) {
+    let maskLayer : CAShapeLayer = CAShapeLayer()
+    maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
+    maskLayer.frame = (view?.bounds)!
+    
+    UIGraphicsBeginImageContext((view?.bounds.size)!);
+    let path = UIBezierPath()
+    
+    path.move(to: CGPoint.init(x: 0, y: 0))
+    path.addLine(to: CGPoint.init(x: ((view?.bounds.size.width)! / 4), y: 0))
+    
+    path.addLine(to: CGPoint.init(x: ((view?.bounds.size.width)! / 4), y: (view?.bounds.size.height)!))
+    
+    path.addLine(to: CGPoint.init(x: 0, y: (view?.bounds.size.height)!))
+    
+    path.close()
+    path.fill()
+    
+    maskLayer.path = path.cgPath;
+    UIGraphicsEndImageContext();
+    view!.layer.mask = maskLayer;
 }
