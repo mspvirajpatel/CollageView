@@ -124,4 +124,6 @@ class CollageViewT503: CollageView {
         self.collageCells += [cell01,cell02,cell03,cell04,cell05]
         
     }
+    
+    
 }

@@ -122,7 +122,7 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
         collageView.layoutIfNeeded()
         collageView.collageType = collageType
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.005) {
             if let imgs = self.photoImages {
                 self.collageView.setPhotos(photos: imgs)
                 if self.collageType == .t404 {
@@ -144,7 +144,19 @@ class CollageViewController: UIViewController, UIGestureRecognizerDelegate {
                     self.collageView.setMiddelHeartView()
                 } else if self.collageType == .t309 {
                     cornerRedius(views: [self.collageView.collageCells[2]])
-                } 
+                } else if self.collageType == .t313 {
+                    self.collageView.setHaxa(cell: self.collageView.collageCells[2])
+                } else if self.collageType == .t303 {
+                    self.collageView.addBorder(cell: self.collageView.collageCells[2], val: 10)
+                } else if self.collageType == .t308 {
+                    self.collageView.addBorder(cell: self.collageView.collageCells[2], val: 10)
+                } else if self.collageType == .t310 {
+                    self.collageView.addBorder(cell: self.collageView.collageCells[2], val: 10)
+                }
+                if self.collageType != .t405 {
+                    self.collageView.updateMargin(val: 5.0)
+                    self.collageView.updatePadding(val: 5.0)
+                }
                 print("final Rect: \(self.collageView.frame)")
             }
         }

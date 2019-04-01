@@ -104,5 +104,57 @@ class CollageViewT403: CollageView {
         
         self.collageCells += [cell01,cell02,cell03,cell04]
         
+        initHandles()
+    }
+    
+    private func initHandles() {
+        
+        let cell01 = self.collageCells[0]
+        var handle01, handle02, handle03 : LineHandleView!
+        
+        handle01 = LineHandleView()
+        self.addSubview(handle01)
+        handle01.initialize(attach: .right, blview: self.baseLineViews[0], cell: cell01)
+        handle01.datasource = self
+        cell01.setHandles(handles: [handle01])
+        
+        let cell02 = self.collageCells[1]
+        handle01 = LineHandleView()
+        self.addSubview(handle01)
+        handle01.initialize(attach: .left, blview: self.baseLineViews[0], cell: cell02)
+        handle01.datasource = self
+        handle02 = LineHandleView()
+        self.addSubview(handle02)
+        handle02.initialize(attach: .bottom, blview: self.baseLineViews[1], cell: cell02)
+        handle02.datasource = self
+        cell02.setHandles(handles: [handle01,handle02])
+        
+        let cell03 = self.collageCells[2]
+        handle01 = LineHandleView()
+        self.addSubview(handle01)
+        handle01.initialize(attach: .left, blview: self.baseLineViews[0], cell: cell03)
+        handle01.datasource = self
+        handle02 = LineHandleView()
+        self.addSubview(handle02)
+        handle02.initialize(attach: .top, blview: self.baseLineViews[1], cell: cell03)
+        handle02.datasource = self
+        handle03 = LineHandleView()
+        self.addSubview(handle03)
+        handle03.initialize(attach: .bottom, blview: self.baseLineViews[2], cell: cell03)
+        handle03.datasource = self
+        cell03.setHandles(handles: [handle01,handle02,handle03])
+        
+        
+        let cell04 = self.collageCells[3]
+        handle01 = LineHandleView()
+        self.addSubview(handle01)
+        handle01.initialize(attach: .left, blview: self.baseLineViews[0], cell: cell04)
+        handle01.datasource = self
+        handle02 = LineHandleView()
+        self.addSubview(handle02)
+        handle02.initialize(attach: .top, blview: self.baseLineViews[2], cell: cell04)
+        handle02.datasource = self
+        cell04.setHandles(handles: [handle01,handle02])
+        
     }
 }

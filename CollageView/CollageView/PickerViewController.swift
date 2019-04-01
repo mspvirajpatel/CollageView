@@ -9,7 +9,7 @@
 import Foundation
 import Photos
 
-class CLOCellItem : NSObject {
+class CellItem : NSObject {
     
     var indexPath : IndexPath!
     var image : UIImage!
@@ -20,7 +20,7 @@ class CLOCellItem : NSObject {
     }
     
     override func isEqual(_ object: Any?) -> Bool {
-        let rhs = object as! CLOCellItem
+        let rhs = object as! CellItem
         let result = (self.indexPath.compare(rhs.indexPath) == .orderedSame)
         return result
     }
@@ -47,8 +47,8 @@ class PickerViewController: UIViewController {
     
     fileprivate var collageItems : [CollageViewType] = [.t101,.t201,.t202,.t203,.t204,.t205,.t206,.t207,.t208,.t209,.t301,.t302,.t303,.t304,.t305,.t306,.t307,.t308,.t309,.t310,.t311,.t312,.t313,.t401,.t402,.t403,.t404,.t405,.t406,.t407,.t408,.t501,.t502,.t503,.t504,.t505,.t506,.t601,.t602,.t801,.t802]
     fileprivate var assets = [PHAsset]()
-    fileprivate var selectedItemSet = Set<CLOCellItem>()
-    fileprivate var selectedItemArray = [CLOCellItem]()
+    fileprivate var selectedItemSet = Set<CellItem>()
+    fileprivate var selectedItemArray = [CellItem]()
     fileprivate var selectedImageArray = [UIImage]()
     fileprivate var collageTransition = CollageTransition()
     
@@ -201,7 +201,7 @@ extension PickerViewController : UICollectionViewDelegate {
             
             if let data = data {
                 let img = UIImage(data: data)
-                let item = CLOCellItem()
+                let item = CellItem()
                 item.indexPath = indexPath
                 item.image = img
                 item.timeQueued = Date()
@@ -250,7 +250,7 @@ extension PickerViewController : UICollectionViewDataSource {
         option.isNetworkAccessAllowed = true
         option.isSynchronous = false
         
-        let cellitem = CLOCellItem()
+        let cellitem = CellItem()
         cellitem.indexPath = indexPath
         cell.numLbl.text = ""
         cell.isCellSelected = self.selectedItemSet.contains(cellitem)
@@ -343,7 +343,7 @@ extension PickerViewController : SwipeViewDataSource {
         collage.layoutIfNeeded()
         collage.layoutSubviews()
         collage.setPhotos(photos: self.selectedImageArray)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0002) {
             if self.collageItems[index] == .t602 {
                 cornerRedius(views: collage.collageCells)
             } else if self.collageItems[index] == .t404 {
@@ -360,9 +360,21 @@ extension PickerViewController : SwipeViewDataSource {
                 collage.setMiddelHeartView()
             } else if self.collageItems[index] == .t309 {
                 cornerRedius(views: [collage.collageCells[2]])
+                collage.addBorder(cell: collage.collageCells[2], val: 10)
             } else if self.collageItems[index] == .t313 {
                 collage.setHaxa(cell: collage.collageCells[2])
-            } 
+            } else if self.collageItems[index] == .t303 {
+                collage.addBorder(cell: collage.collageCells[2], val: 10)
+            } else if self.collageItems[index] == .t308 {
+                collage.addBorder(cell: collage.collageCells[2], val: 10)
+            } else if self.collageItems[index] == .t310 {
+                collage.addBorder(cell: collage.collageCells[2], val: 10)
+            }
+            
+            if self.collageItems[index] != .t405 {
+                collage.updateMargin(val: 5.0)
+                collage.updatePadding(val: 5.0)
+            }
         }
         return view
     }

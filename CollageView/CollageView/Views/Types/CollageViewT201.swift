@@ -57,6 +57,28 @@ class CollageViewT201: CollageView {
         self.paddingLeftTopContraints += [lc06]
         self.paddingRightBottomContraints += [lc04]
         self.collageCells += [cell01,cell02]
+       
+        initHandles()
+    }
+    
+    private func initHandles() {
+        
+        let cell01 = self.collageCells[0]
+        var handle01 : LineHandleView!
+        
+        handle01 = LineHandleView()
+        self.addSubview(handle01)
+        handle01.initialize(attach: .bottom, blview: self.baseLineViews[0], cell: cell01)
+        handle01.datasource = self
+        cell01.setHandles(handles: [handle01])
+        
+        let cell02 = self.collageCells[1]
+        handle01 = LineHandleView()
+        self.addSubview(handle01)
+        handle01.initialize(attach: .top, blview: self.baseLineViews[0], cell: cell02)
+        handle01.datasource = self
+        
+        cell02.setHandles(handles: [handle01])
         
     }
     

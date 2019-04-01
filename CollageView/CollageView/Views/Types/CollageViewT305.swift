@@ -48,7 +48,7 @@ class CollageViewT305: CollageView {
         
         let lc09 = NSLayoutConstraint(item: baseLine03, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
         let lc10 = NSLayoutConstraint(item: baseLine03, attribute: .top, relatedBy: .equal, toItem: baseLine01, attribute: .bottom, multiplier: 1, constant: 0)
-        let lc11 = NSLayoutConstraint(item: baseLine03, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.5, constant: 0)
+        let lc11 = NSLayoutConstraint(item: baseLine03, attribute: .width, relatedBy: .equal, toItem: baseLine02, attribute: .width, multiplier: 1, constant: 0)
         let lc12 = NSLayoutConstraint(item: baseLine03, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([ lc09, lc10, lc11, lc12])
         baseLine03.baseLC = lc11
@@ -91,6 +91,43 @@ class CollageViewT305: CollageView {
         self.paddingLeftTopContraints += [lc05,lc10]
         self.paddingRightBottomContraints += [lc03,lc04,lc08,lc11]
         self.collageCells += [cell01,cell03,cell02]
+        
+        initHandles()
     }
     
+    private func initHandles() {
+        
+        let cell01 = self.collageCells[0]
+        var handle01, handle02 : LineHandleView!
+        
+        handle01 = LineHandleView()
+        self.addSubview(handle01)
+        handle01.initialize(attach: .right, blview: self.baseLineViews[1], cell: cell01)
+        handle01.datasource = self
+        handle02 = LineHandleView()
+        self.addSubview(handle02)
+        handle02.initialize(attach: .bottom, blview: self.baseLineViews[0], cell: cell01)
+        handle02.datasource = self
+        cell01.setHandles(handles: [handle01,handle02])
+        
+        let cell03 = self.collageCells[1]
+        handle01 = LineHandleView()
+        self.addSubview(handle01)
+        handle01.initialize(attach: .top, blview: self.baseLineViews[0], cell: cell03)
+        handle01.datasource = self
+        handle02 = LineHandleView()
+        self.addSubview(handle02)
+        handle02.initialize(attach: .right, blview: self.baseLineViews[1], cell: cell03)
+        handle02.datasource = self
+        cell03.setHandles(handles: [handle01,handle02])
+        
+        let cell04 = self.collageCells[2]
+        handle01 = LineHandleView()
+        self.addSubview(handle01)
+        handle01.initialize(attach: .left, blview: self.baseLineViews[1], cell: cell04)
+        handle01.datasource = self
+        
+        
+        cell04.setHandles(handles: [handle01])
+    }
 }

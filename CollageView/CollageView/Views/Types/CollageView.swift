@@ -284,6 +284,11 @@ open class CollageView: UIView {
         }
     }
     
+    func addBorder(cell: CollageCell, val: CGFloat) {
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = val
+    }
+    
     func setTransferentView(isLargeSize: Bool = false) {
         for cell in collageCells {
             var polyWidth = CGFloat(0)
@@ -314,17 +319,20 @@ open class CollageView: UIView {
 extension CollageView : CollageCellDelegate {
     
     func didSelectCell(cellId: Int) {
-//        var isDidSelectedFirst = false
-//        for cell in self.collageCells {
-//            if cell.id != cellId {
-//                cell.isSelected = false
-//                if !isDidSelectedFirst {
-//                    delegate?.didSelectCell(cellId: cellId)
-//                    isDidSelectedFirst = true
-//                }
-//            }
-//        }
+        var isDidSelectedFirst = false
+        for cell in self.collageCells {
+            if cell.id != cellId {
+                cell.isSelected = false
+                if !isDidSelectedFirst {
+                    delegate?.didSelectCell(cellId: cellId)
+                    isDidSelectedFirst = true
+                }
+            } else {
+                 cell.isSelected = true
+            }
+        }
     }
+    
 }
 
 extension CollageView : LineHandleViewDataSource {
